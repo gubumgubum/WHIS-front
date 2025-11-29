@@ -1,4 +1,5 @@
 import logo from '../../assets/img/logo.png';
+import PasswordInput from '../../components/signin/passwrodInput';
 import TextInput from '../../components/signin/textInput';
 
 function Step1Page() {
@@ -9,6 +10,11 @@ function Step1Page() {
         <p>1단계 : 계정 정보 입력</p>
         <form>
           <TextInput placeholder="이메일" />
+          <div>
+            <PasswordInput placeholder="비밀번호" />
+            <p>영문과 숫자를 포함한 8자 이상</p>
+            <PasswordInput placeholder="비밀번호 확인" />
+          </div>
         </form>
       </div>
     </div>
