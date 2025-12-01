@@ -8,6 +8,7 @@ import SelectButton from '../../components/signup/selectButton';
 function Step2Page() {
   const [preview, setPreview] = useState(null);
   const [gender, setGender] = useState('');
+  const [grade, setGrade] = useState('');
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -66,9 +67,24 @@ function Step2Page() {
               />
             </div>
             <div>
-              <SelectButton className="w-[128px] h-[50px]" text="1학년" />
-              <SelectButton className="w-[128px] h-[50px]" text="2학년" />
-              <SelectButton className="w-[128px] h-[50px]" text="3학년" />
+              <SelectButton
+                className="w-[128px] h-[50px]"
+                isSelected={grade === '1학년'}
+                onClick={() => setGrade('1학년')}
+                text="1학년"
+              />
+              <SelectButton
+                className="w-[128px] h-[50px]"
+                isSelected={grade === '2학년'}
+                onClick={() => setGrade('2학년')}
+                text="2학년"
+              />
+              <SelectButton
+                className="w-[128px] h-[50px]"
+                isSelected={grade === '3학년'}
+                onClick={() => setGrade('3학년')}
+                text="3학년"
+              />
             </div>
           </div>
         </form>
