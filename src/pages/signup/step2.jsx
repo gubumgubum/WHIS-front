@@ -4,11 +4,15 @@ import Upload from '../../assets/icon/upload';
 import defaultProfile from '../../assets/img/defaultImage.png';
 import TextInput from '../../components/signin/textInput';
 import SelectButton from '../../components/signup/selectButton';
+import Button from '../../components/signin/button';
 
 function Step2Page() {
   const [preview, setPreview] = useState(null);
+  const [name, setName] = useState('');
   const [gender, setGender] = useState('');
   const [grade, setGrade] = useState('');
+
+  const isFormValid = name.trim() !== '' && gender !== '' && grade !== '';
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -17,16 +21,24 @@ function Step2Page() {
     setPreview(imageUrl);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!isFormValid) return;
+  };
+
   return (
-    <div>
-      <div>
-        <div>
+    <div className="flex justify-center items-center h-screen">
+      <div className="w-[30rem] h-[30.375rem] bg-[#FFF7F0] flex flex-col items-center justify-center rounded-[2rem] shadow-box gap-[10px]">
+        <div className="flex flex-col items-center">
           <img src={logo} alt="Logo" className="w-[126px] h-[86px]" />
           <p className="font-light text-xs">2단계 : 프로필 정보 입력</p>
         </div>
-        <form>
-          <div>
-            <div className="w-[80px] h-[80px] rounded-full overflow-hidden border border-black">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col items-center mb-[15px]"
+        >
+          <div className="flex flex-col items-center mb-[17px] gap-[10px]">
+            <div className="w-[80px] h-[80px] bg-white rounded-full overflow-hidden border border-black ">
               <img
                 src={preview || defaultProfile}
                 alt="profile"
@@ -50,9 +62,13 @@ function Step2Page() {
               onChange={handleImageUpload}
             />
           </div>
-          <div>
-            <TextInput placeholder="이름" />
-            <div>
+          <div className="flex flex-col items-center gap-[10px]">
+            <TextInput
+              placeholder="이름"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <div className="flex items-center gap-[20px]">
               <SelectButton
                 className="w-[194px] h-[50px]"
                 isSelected={gender === '남자'}
@@ -66,7 +82,7 @@ function Step2Page() {
                 text="여자"
               />
             </div>
-            <div>
+            <div className="flex items-center gap-[12px] mb-[12px]">
               <SelectButton
                 className="w-[128px] h-[50px]"
                 isSelected={grade === '1학년'}
@@ -87,6 +103,13 @@ function Step2Page() {
               />
             </div>
           </div>
+          <Button
+            type="submit"
+            disabled={!isFormValid}
+            className={!isFormValid ? 'bg-[#BA9A81]' : 'bg-[#AC7F5E]'}
+          >
+            회원가입
+          </Button>
         </form>
       </div>
     </div>
