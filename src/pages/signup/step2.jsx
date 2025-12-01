@@ -54,6 +54,11 @@ function Step2Page() {
               <SelectButton className="w-[194px] h-[50px]" text="남자" />
               <SelectButton className="w-[194px] h-[50px]" text="여자" />
             </div>
+            <div>
+              <SelectButton className="w-[128px] h-[50px]" text="1학년" />
+              <SelectButton className="w-[128px] h-[50px]" text="2학년" />
+              <SelectButton className="w-[128px] h-[50px]" text="3학년" />
+            </div>
           </div>
         </form>
       </div>
