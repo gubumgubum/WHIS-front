@@ -2,6 +2,8 @@ import { useState } from 'react';
 import logo from '../../assets/img/logo.png';
 import Upload from '../../assets/icon/upload';
 import defaultProfile from '../../assets/img/defaultImage.png';
+import TextInput from '../../components/signin/textInput';
+import Button from '../../components/signin/button';
 
 function Step2Page() {
   const [preview, setPreview] = useState(null);
@@ -45,6 +47,9 @@ function Step2Page() {
               className="hidden"
               onChange={handleImageUpload}
             />
+          </div>
+          <div>
+            <TextInput placeholder="이름" />
           </div>
         </form>
       </div>
