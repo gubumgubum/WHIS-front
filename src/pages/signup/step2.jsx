@@ -7,6 +7,7 @@ import SelectButton from '../../components/signup/selectButton';
 
 function Step2Page() {
   const [preview, setPreview] = useState(null);
+  const [gender, setGender] = useState('');
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -51,8 +52,18 @@ function Step2Page() {
           <div>
             <TextInput placeholder="이름" />
             <div>
-              <SelectButton className="w-[194px] h-[50px]" text="남자" />
-              <SelectButton className="w-[194px] h-[50px]" text="여자" />
+              <SelectButton
+                className="w-[194px] h-[50px]"
+                isSelected={gender === '남자'}
+                onClick={() => setGender('남자')}
+                text="남자"
+              />
+              <SelectButton
+                className="w-[194px] h-[50px]"
+                isSelected={gender === '여자'}
+                onClick={() => setGender('여자')}
+                text="여자"
+              />
             </div>
             <div>
               <SelectButton className="w-[128px] h-[50px]" text="1학년" />
