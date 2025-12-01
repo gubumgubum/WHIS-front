@@ -3,7 +3,7 @@ import logo from '../../assets/img/logo.png';
 import Upload from '../../assets/icon/upload';
 import defaultProfile from '../../assets/img/defaultImage.png';
 import TextInput from '../../components/signin/textInput';
-import Button from '../../components/signin/button';
+import SelectButton from '../../components/signup/selectButton';
 
 function Step2Page() {
   const [preview, setPreview] = useState(null);
@@ -50,6 +50,10 @@ function Step2Page() {
           </div>
           <div>
             <TextInput placeholder="이름" />
+            <div>
+              <SelectButton className="w-[194px] h-[50px]" text="남자" />
+              <SelectButton className="w-[194px] h-[50px]" text="여자" />
+            </div>
           </div>
         </form>
       </div>
