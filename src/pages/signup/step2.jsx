@@ -73,13 +73,13 @@ function Step2Page() {
                 className="w-[194px] h-[50px]"
                 isSelected={gender === '남자'}
                 onClick={() => setGender('남자')}
-                text="남자"
+                text="남성"
               />
               <SelectButton
                 className="w-[194px] h-[50px]"
                 isSelected={gender === '여자'}
                 onClick={() => setGender('여자')}
-                text="여자"
+                text="여성"
               />
             </div>
             <div className="flex items-center gap-[12px] mb-[12px]">
