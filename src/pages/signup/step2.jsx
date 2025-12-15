@@ -9,10 +9,9 @@ import Button from '../../components/signin/button';
 function Step2Page() {
   const [preview, setPreview] = useState(null);
   const [name, setName] = useState('');
-  const [gender, setGender] = useState('');
   const [grade, setGrade] = useState('');
 
-  const isFormValid = name.trim() !== '' && gender !== '' && grade !== '';
+  const isFormValid = name.trim() !== '' && grade !== '';
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -28,7 +27,7 @@ function Step2Page() {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="w-[30rem] h-[30.375rem] bg-[#FFF7F0] flex flex-col items-center justify-center rounded-[2rem] shadow-box gap-[10px]">
+      <div className="w-[480px] h-[441px] bg-[#FFF7F0] flex flex-col items-center justify-center rounded-[2rem] shadow-box gap-[10px]">
         <div className="flex flex-col items-center">
           <img src={logo} alt="Logo" className="w-[126px] h-[86px]" />
           <p className="font-light text-xs">2단계 : 프로필 정보 입력</p>
@@ -68,20 +67,6 @@ function Step2Page() {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <div className="flex items-center gap-[20px]">
-              <SelectButton
-                className="w-[194px] h-[50px]"
-                isSelected={gender === '남자'}
-                onClick={() => setGender('남자')}
-                text="남성"
-              />
-              <SelectButton
-                className="w-[194px] h-[50px]"
-                isSelected={gender === '여자'}
-                onClick={() => setGender('여자')}
-                text="여성"
-              />
-            </div>
             <div className="flex items-center gap-[12px] mb-[12px]">
               <SelectButton
                 className="w-[128px] h-[50px]"
