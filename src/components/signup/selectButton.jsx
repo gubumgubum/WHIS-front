@@ -3,7 +3,7 @@ export default function SelectButton({ className, text, isSelected, onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className={`bg-white border border-[#818181] rounded-xl ${isSelected ? 'bg-[#AC7F5E] text-white font-semibold' : 'text-[818181] text-lg font-light'} ${className}`}
+      className={`rounded-xl ${isSelected ? 'bg-[#AC7F5E] text-white font-semibold text-lg' : 'bg-white text-[#818181] text-lg font-light border border-[#818181]'} ${className}`}
     >
       {text}
     </button>
