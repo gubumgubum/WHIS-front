@@ -2,12 +2,14 @@ import { useState } from 'react';
 import EyeOff from '../../assets/img/eyeOff';
 import EyeOn from '../../assets/img/eyeOn';
 
-export default function PasswordInput({ placeholder }) {
+export default function PasswordInput({ placeholder, value, onChange }) {
   const [show, setShow] = useState(false);
   return (
     <div className="relative w-[25.5rem]">
       <input
         type={show ? 'text' : 'password'}
+        value={value}
+        onChange={onChange}
         placeholder={placeholder}
         className="w-[25.5rem] h-[3.125rem] border border-[#818181] rounded-xl p-4 focus:outline-none focus:border-black"
       />
