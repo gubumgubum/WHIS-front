@@ -2,6 +2,7 @@ import UnauthHeader from '../../components/header/unauth/ui';
 import employment from '../../assets/img/employment.png';
 import character from '../../assets/img/character.png';
 import letter from '../../assets/img/letter.png';
+import { Link } from 'react-router-dom';
 
 export default function MainUnauthPage() {
   return (
@@ -17,12 +18,12 @@ export default function MainUnauthPage() {
           <img
             src={character}
             alt="캐릭터 이미지"
-            className="w-[90px] absolute right-[700px] top-[35%]"
+            className="w-[90px] absolute right-[700px] top-[29%]"
           />
           <img
             src={letter}
             alt="편지 이미지"
-            className="w-[88px] absolute left-[580px] bottom-[35%]"
+            className="w-[88px] absolute left-[600px] bottom-[40%]"
           />
           <div className="flex flex-col justify-center items-center">
             <p className="text-[64px] font-extrabold font-pretendard text-white">
@@ -37,6 +38,9 @@ export default function MainUnauthPage() {
               </p>
             </div>
           </div>
+          <button className="text-white border border-white w-[140px] h-[54px] rounded-xl font-bold mt-[59px]">
+            <Link to="/signin">로그인 하러가기</Link>
+          </button>
         </div>
       </div>
     </div>
