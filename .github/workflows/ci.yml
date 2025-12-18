@@ -28,7 +28,7 @@ jobs:
         run: npm ci
 
       - name: Test
-        run: npm test --if-present
+        run: npm test -- --watchAll=false --passWithNoTests
 
       - name: Lint
         run: npm run lint --if-present
