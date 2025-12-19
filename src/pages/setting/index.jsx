@@ -8,11 +8,11 @@ function SettingPage() {
     <div>
       <AuthHeader />
       <main className="flex flex-col items-center mt-[6.5rem]">
-        <h1 className="text-xl font-pertendard font-black mb-[30px]">
+        <h1 className="text-xl font-pertendard font-extrabold mb-[30px]">
           계정 설정
         </h1>
 
-        <section className="w-[698px] bg-[#FFF7F0] rounded-3xl shadow-md shadow-black/60 p-6 mb-6">
+        <section className="w-[698px] bg-[#FFF7F0] rounded-3xl shadow-md shadow-black/60 pt-5 px-6 pb-[30px] mb-[52px]">
           <h2 className="font-pretendard font-bold mb-4">개인 정보 보호</h2>
 
           <Link
@@ -40,7 +40,7 @@ function SettingPage() {
           </Link>
         </section>
 
-        <section className="w-[698px] h-auto bg-[#FFF7F0] rounded-3xl shadow-md shadow-black/60 p-6 mt-8 mb-6">
+        <section className="w-[698px] h-auto bg-[#FFF7F0] rounded-3xl shadow-md shadow-black/60 pt-5 pb-[30px] px-6 mb-[98px]">
           <h2 className="font-pretendard font-bold mb-4">이용 약관</h2>
           <Link
             to="/service"
@@ -51,7 +51,7 @@ function SettingPage() {
           </Link>
         </section>
 
-        <section className="w-[698px] h-auto bg-[#FFF7F0] rounded-3xl shadow-md shadow-black/60 p-6 mt-[100px] mb-6">
+        <section className="w-[698px] h-auto bg-[#FFF7F0] rounded-3xl shadow-md shadow-black/60 py-[30px] px-6">
           <button className="flex justify-between items-center bg-white w-full text-[#C21414] font-pretendard font-medium p-3 rounded-xl text-left border-gray-400 border">
             <span>로그아웃</span>
             <Exit />
