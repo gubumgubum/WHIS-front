@@ -1,7 +1,7 @@
 import AuthHeader from '../../components/header/auth/ui';
-import PostBox from '../../components/signup/postbox';
+import PostBox from '../../components/main/postbox';
 import postbear from '../../assets/img/postbear.png';
-import CreatePost from '../../components/signup/createpost';
+import CreatePost from '../../components/main/createpost';
 import blueberrybear from '../../assets/img/blueberrybear.png';
 
 export default function MainAuthPage() {
