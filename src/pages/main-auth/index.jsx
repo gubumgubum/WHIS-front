@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 export default function MainAuthPage() {
   return (
-    <div>
+    <div className="relative">
       <AuthHeader />
       <img
         src={postbear}
@@ -21,7 +21,7 @@ export default function MainAuthPage() {
       <CreatePost className="fixed bottom-[50px] right-[50px] z-50" />
       <div className="flex pt-[83px] pl-[474px] pr-[386px] pb-[110px] gap-[60px]">
         <PostBox />
-        <div className="w-px bg-[#C2C2C2] h-[2350px]" />
+        <div className="w-[60px]" />
         <div className="flex flex-col gap-[100px]">
           <div className="flex flex-col gap-5">
             <p className="font-pretendard font-semibold">
@@ -113,6 +113,15 @@ export default function MainAuthPage() {
           </div>
         </div>
       </div>
+      <div
+        className="absolute bg-[#C2C2C2]"
+        style={{
+          width: '1px',
+          height: '2350px',
+          left: '1078px',
+          top: '128px',
+        }}
+      />
     </div>
   );
 }
