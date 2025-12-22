@@ -23,7 +23,12 @@ function Step1Page() {
     e.preventDefault();
     if (!isFormValid) return;
 
-    navigate('/signup-step2');
+    navigate('/signup-step2', {
+      state: {
+        email,
+        password,
+      },
+    });
   };
 
   return (
