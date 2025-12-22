@@ -32,7 +32,7 @@ function SettingPage() {
           </Link>
 
           <Link
-            to="/report-inquiry"
+            to="/inquiry"
             className="flex justify-between items-center font-pretendard font-medium bg-white w-full border-gray-400 border p-3 rounded-xl text-left"
           >
             <span>문의 하기</span>
