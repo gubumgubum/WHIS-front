@@ -46,10 +46,10 @@ export default function Dropdown({
           className={`
             absolute w-[136px] rounded-xl border
             bg-[#FFF9F4] shadow-lg z-50
-            ${scrollable ? 'h-[349px] overflow-y-auto' : 'py-2'}
+            ${scrollable ? 'h-[349px] overflow-y-auto' : ''}
           `}
         >
-          {options.map((opt) => (
+          {options.map((opt, index) => (
             <li
               key={opt}
               onClick={() => handleSelect(opt)}
@@ -57,7 +57,8 @@ export default function Dropdown({
                 hover:bg-[#FFEEE1] hover:text-[#1E0D00]
                 font-pretendard text-sm text-[#818181]
                 h-[29px] flex items-center
-                ${selected === opt ? 'font-semibold' : ''}`}
+                ${index === 0 ? 'rounded-t-xl' : ''}
+                ${index === options.length - 1 ? 'rounded-b-xl' : ''}`}
             >
               {opt}
             </li>
