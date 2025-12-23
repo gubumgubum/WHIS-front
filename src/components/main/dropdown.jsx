@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import BottomArrow from '../../assets/icon/bottomarrow';
 
-export default function Dropdown({ options, value, onChange, width = 136 }) {
+export default function Dropdown({ options, defaultValue = '전체', onChange }) {
   const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState(defaultValue);
   const ref = useRef(null);
 
   useEffect(() => {
@@ -15,40 +16,41 @@ export default function Dropdown({ options, value, onChange, width = 136 }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const handleSelect = (value) => {
+    setSelected(value);
+    setOpen(false);
+    onChange?.(value);
+  };
+
   return (
-    <div ref={ref} className="relative" style={{ width }}>
+    <div ref={ref} className="relative w-[160px]">
       <button
         onClick={() => setOpen((prev) => !prev)}
-        className="w-full h-[48px] flex items-center justify-between
-                   px-4 rounded-2xl border border-[#818181]
+        className="w-[136px] h-[48px] flex items-center justify-between
+                   px-4 py-2 rounded-2xl border border-[#818181]
                    shadow-sm bg-white"
       >
-        <span className="font-pretendard font-medium text-[20px]">{value}</span>
+        <span className="font-pretendard font-medium text-[20px]">
+          {selected}
+        </span>
         <BottomArrow />
       </button>
 
       {open && (
         <ul
-          className="absolute mt-2 w-full rounded-xl border
+          className="absolute w-[136px] rounded-xl border
                      bg-[#FFF9F4] shadow-lg
-                     z-50"
+                     h-[349px] overflow-y-auto z-50"
         >
           {options.map((opt) => (
             <li
               key={opt}
-              onClick={() => {
-                onChange(opt);
-                setOpen(false);
-              }}
-              className={`
-                px-[7px] h-[29px] flex items-center cursor-pointer
-                font-pretendard text-sm
-                ${
-                  value === opt
-                    ? 'bg-[#FFEEE1] text-[#1E0D00] font-semibold'
-                    : 'text-[#818181] hover:bg-[#FFEEE1]'
-                }
-              `}
+              onClick={() => handleSelect(opt)}
+              className={`px-[7px] cursor-pointer
+                hover:bg-[#FFEEE1] hover:text-[#1E0D00]
+                font-pretendard text-sm text-[#818181]
+                h-[29px] flex items-center
+                ${selected === opt ? 'font-semibold' : ''}`}
             >
               {opt}
             </li>
