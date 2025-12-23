@@ -57,10 +57,8 @@ function Step2Page() {
       navigate('/signin');
     } catch (error) {
       alert('회원가입에 실패했습니다.');
-      console.error(error);
     }
   };
-  console.log(process.env.REACT_APP_API_BASE_URL);
 
   return (
     <div className="flex justify-center items-center h-screen">
