@@ -26,7 +26,7 @@ export default function PostBox() {
               <p className="font-pretendard text-xs text-[#818181]">
                 {post.time}
               </p>
-              <p className="bg-[#DDA67E] rounded-lg text-white font-pretendard border border-[#818181] text-[10px] w-[32px] h-[15px] text-center">
+              <p className="bg-[#DDA67E] rounded-lg text-white font-pretendard border border-[#818181] text-[10px] w-[44px] h-[15px] text-center">
                 {post.type}
               </p>
             </div>
