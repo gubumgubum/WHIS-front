@@ -5,7 +5,7 @@ export default function Dropdown({
   options,
   defaultValue = '전체',
   onChange,
-  scrollable = false, // ⭐ 추가
+  scrollable = false,
 }) {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(defaultValue);
