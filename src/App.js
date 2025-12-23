@@ -5,6 +5,7 @@ import Step2Page from './pages/signup/step2';
 import MainUnauthPage from './pages/main-unauth';
 import SettingPage from './pages/setting';
 import InquiryPage from './pages/inquiry';
+import ReportPage from './pages/report';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/signup-step2" element={<Step2Page />} />
       <Route path="/setting" element={<SettingPage />} />
       <Route path="/inquiry" element={<InquiryPage />} />
+      <Route path="/report" element={<ReportPage />} />
     </Routes>
   );
 }
