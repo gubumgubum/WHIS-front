@@ -18,6 +18,7 @@ function App() {
         <Route path="/signup-step1" element={<Step1Page />} />
         <Route path="/signup-step2" element={<Step2Page />} />
         <Route path="/setting" element={<SettingPage />} />
+        <Route path="/main-auth" element={<MainAuthPage />} />
       </Routes>
     </>
   );
