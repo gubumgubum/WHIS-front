@@ -20,8 +20,8 @@ export default function MainAuthPage() {
         className="w-[104px] fixed bottom-[50px] left-[50px] z-50"
       />
       <CreatePost className="fixed bottom-[50px] right-[50px] z-50" />
-      <div className="flex pl-[474px] pr-[386px] pb-[110px] gap-[60px]">
-        <div className="flex flex-col gap-[60px] mt-[35px]">
+      <div className="flex pl-[474px] pt-[83px] pr-[386px] pb-[110px] gap-[60px]">
+        <div className="flex flex-col gap-[20px]">
           <CategoryDropdown />
           <PostBox />
         </div>
@@ -121,7 +121,7 @@ export default function MainAuthPage() {
         className="absolute bg-[#C2C2C2]"
         style={{
           width: '1px',
-          height: '2350px',
+          height: '2412px',
           left: '1078px',
           top: '128px',
         }}
