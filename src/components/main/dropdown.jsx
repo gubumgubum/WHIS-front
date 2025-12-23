@@ -1,7 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
 import BottomArrow from '../../assets/icon/bottomarrow';
 
-export default function Dropdown({ options, defaultValue = '전체', onChange }) {
+export default function Dropdown({
+  options,
+  defaultValue = '전체',
+  onChange,
+  scrollable = false, // ⭐ 추가
+}) {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(defaultValue);
   const ref = useRef(null);
@@ -38,9 +43,11 @@ export default function Dropdown({ options, defaultValue = '전체', onChange })
 
       {open && (
         <ul
-          className="absolute w-[136px] rounded-xl border
-                     bg-[#FFF9F4] shadow-lg
-                     h-[349px] overflow-y-auto z-50"
+          className={`
+            absolute w-[136px] rounded-xl border
+            bg-[#FFF9F4] shadow-lg z-50
+            ${scrollable ? 'h-[349px] overflow-y-auto' : 'py-2'}
+          `}
         >
           {options.map((opt) => (
             <li
