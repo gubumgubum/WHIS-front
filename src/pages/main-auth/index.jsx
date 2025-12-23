@@ -8,6 +8,7 @@ import snack from '../../assets/img/snack.png';
 import hearts from '../../assets/img/hearts.png';
 import paper from '../../assets/img/paper.png';
 import { Link } from 'react-router-dom';
+import CategoryDropdown from '../../components/main/CategoryDropdown';
 
 export default function MainAuthPage() {
   return (
@@ -19,10 +20,13 @@ export default function MainAuthPage() {
         className="w-[104px] fixed bottom-[50px] left-[50px] z-50"
       />
       <CreatePost className="fixed bottom-[50px] right-[50px] z-50" />
-      <div className="flex pt-[83px] pl-[474px] pr-[386px] pb-[110px] gap-[60px]">
-        <PostBox />
+      <div className="flex pl-[474px] pr-[386px] pb-[110px] gap-[60px]">
+        <div className="flex flex-col gap-[60px] mt-[35px]">
+          <CategoryDropdown />
+          <PostBox />
+        </div>
         <div className="w-[60px]" />
-        <div className="flex flex-col gap-[100px]">
+        <div className="flex flex-col gap-[100px] mt-[83px]">
           <div className="flex flex-col gap-5">
             <p className="font-pretendard font-semibold">
               Whis에 대한 모든 것📸
