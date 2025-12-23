@@ -8,9 +8,27 @@ import snack from '../../assets/img/snack.png';
 import hearts from '../../assets/img/hearts.png';
 import paper from '../../assets/img/paper.png';
 import { Link } from 'react-router-dom';
-import CategoryDropdown from '../../components/main/categoryDropdown';
+import Dropdown from '../../components/main/dropdown';
+import { useState } from 'react';
+
+const categories = [
+  '전체',
+  '1학년',
+  '2학년',
+  '3학년',
+  '공부',
+  '전공',
+  '코드 공유',
+  '자격증',
+  '취업',
+  '연애',
+  '잡담',
+  '학교',
+];
 
 export default function MainAuthPage() {
+  const [selected, setSelected] = useState('전체');
+
   return (
     <div className="relative">
       <AuthHeader />
@@ -22,7 +40,11 @@ export default function MainAuthPage() {
       <CreatePost className="fixed bottom-[50px] right-[50px] z-50" />
       <div className="flex pl-[474px] pt-[83px] pr-[386px] pb-[110px] gap-[60px]">
         <div className="flex flex-col gap-[20px]">
-          <CategoryDropdown />
+          <Dropdown
+            options={categories}
+            value={selected}
+            onChange={setSelected}
+          />
           <PostBox />
         </div>
         <div className="w-[60px]" />
