@@ -8,7 +8,7 @@ import snack from '../../assets/img/snack.png';
 import hearts from '../../assets/img/hearts.png';
 import paper from '../../assets/img/paper.png';
 import { Link } from 'react-router-dom';
-import CategoryDropdown from '../../components/main/categorydropdown';
+import CategoryDropdown from '../../components/main/categoryDropdown';
 
 export default function MainAuthPage() {
   return (
