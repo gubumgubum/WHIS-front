@@ -1,4 +1,4 @@
-import instance from './axois';
+import instance from './axios';
 
 export const postSignup = async ({
   email,
