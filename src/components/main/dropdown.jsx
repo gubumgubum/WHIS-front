@@ -1,24 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import BottomArrow from '../../assets/icon/bottomarrow';
 
-const categories = [
-  '전체',
-  '1학년',
-  '2학년',
-  '3학년',
-  '공부',
-  '전공',
-  '코드 공유',
-  '자격증',
-  '취업',
-  '연애',
-  '잡담',
-  '학교',
-];
-
-export default function CategoryDropdown() {
+export default function Dropdown({ options, defaultValue = '전체', onChange }) {
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState('전체');
+  const [selected, setSelected] = useState(defaultValue);
   const ref = useRef(null);
 
   useEffect(() => {
@@ -31,6 +16,12 @@ export default function CategoryDropdown() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const handleSelect = (value) => {
+    setSelected(value);
+    setOpen(false);
+    onChange?.(value);
+  };
+
   return (
     <div ref={ref} className="relative w-[160px]">
       <button
@@ -42,30 +33,26 @@ export default function CategoryDropdown() {
         <span className="font-pretendard font-medium text-[20px]">
           {selected}
         </span>
-        <span>
-          <BottomArrow />
-        </span>
+        <BottomArrow />
       </button>
 
-      {/* 드롭다운 */}
       {open && (
         <ul
           className="absolute w-[136px] rounded-xl border
                      bg-[#FFF9F4] shadow-lg
                      h-[349px] overflow-y-auto z-50"
         >
-          {categories.map((cat) => (
+          {options.map((opt) => (
             <li
-              key={cat}
-              onClick={() => {
-                setSelected(cat);
-                setOpen(false);
-              }}
+              key={opt}
+              onClick={() => handleSelect(opt)}
               className={`px-[7px] cursor-pointer
-                hover:bg-[#FFEEE1] hover:text-[#1E0D00] font-pretendard text-sm text-[#818181] h-[29px] flex items-center 
-                ${selected === cat ? 'font-semibold' : ''}`}
+                hover:bg-[#FFEEE1] hover:text-[#1E0D00]
+                font-pretendard text-sm text-[#818181]
+                h-[29px] flex items-center
+                ${selected === opt ? 'font-semibold' : ''}`}
             >
-              {cat}
+              {opt}
             </li>
           ))}
         </ul>
