@@ -6,7 +6,7 @@ export default function AuthHeader() {
   return (
     <header className="flex items-center justify-center w-full h-[70px] border-b border-[#818181] gap-[20px]">
       <div>
-        <Link to="/main-unauth">
+        <Link to="/main-auth">
           <img src={logo} alt="Logo" className="w-[82.62px] h-[55.5px]" />
         </Link>
       </div>
