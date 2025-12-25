@@ -1,31 +1,30 @@
-// components/alarm/AlarmItem.jsx
-function AlarmItem({ alarm, isRead, onClick }) {
+export default function AlarmItem({ alarm, isRead, onClick }) {
   return (
     <div
       onClick={onClick}
       className={`
-        relative w-[544px] h-[176px] cursor-pointer rounded-2xl px-[46px] pb-[34px] pt-10
-        transition shadow-sm hover:shadow-md
-        ${isRead ? 'bg-white' : 'bg-blue-50'}
+        relative w-[544px] h-[176px] cursor-pointer rounded-[32px]
+        px-[46px] pb-[31px] pt-10
+        shadow-[6px_6px_15px_1px_rgba(0,0,0,0.15)]
+        ${isRead ? 'bg-white' : 'bg-[#EDF8FF]'}
       `}
     >
-      <div className="flex gap-1 items-start">
+      <div className="flex items-center gap-1">
         <div className="flex items-center justify-center">{alarm.icon}</div>
-        <div className="flex-1">
-          <p className="text-[20px] font-pretendard font-medium text-[#1E0D00]">
-            {alarm.title}
-          </p>
-          <p className="mt-[20px] text-sm text-[#818181] font-pretendard">
-            {alarm.content}
-          </p>
-          <p className="mt-[27px] text-xs text-[#818181]">{alarm.createdAt}</p>
-        </div>
+
+        <p className="text-[20px] font-pretendard font-medium text-[#1E0D00]">
+          {alarm.title}
+        </p>
       </div>
+      <p className="mt-[20px] text-sm text-[#818181] font-pretendard ml-[28px]">
+        {alarm.content}
+      </p>
+      <p className="mt-[27px] text-xs text-[#818181] ml-[28px]">
+        {alarm.createdAt}
+      </p>
       {!isRead && (
-        <span className="absolute right-4 top-5 h-2 w-2 rounded-full bg-blue-500" />
+        <span className="absolute right-[49px] top-[44px] h-[15px] w-[15px] rounded-full bg-[#20ABFF]" />
       )}
     </div>
   );
 }
-
-export default AlarmItem;
