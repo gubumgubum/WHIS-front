@@ -42,7 +42,7 @@ export default function ViewPostPage() {
   return (
     <div>
       <AuthHeader />
-      <div className="flex pt-[46px] pb-[34px] pl-[385px] pr-[107px]">
+      <div className="relative flex pt-[46px] pb-[34px] pl-[385px] pr-[107px]">
         <div className="flex w-[1429px]">
           <section className="flex flex-col pr-[88px]">
             <div className="flex justify-between items-center">
@@ -107,7 +107,7 @@ export default function ViewPostPage() {
             </div>
           </section>
 
-          <div className="w-px bg-[#E5E5E5]" />
+          <div className="w-px bg-[#EBEBEB] absolute top-[50px] bottom-[34px] left-[970px]" />
 
           <section className="flex-1 pl-[88px] mt-[42px]">
             <div className="flex flex-col gap-7">
