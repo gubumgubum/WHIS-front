@@ -1,4 +1,4 @@
-export default function File() {
+export default function FileIcon() {
   <svg
     width="15"
     height="15"
