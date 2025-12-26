@@ -10,6 +10,7 @@ import SettingPage from './pages/setting';
 import Alerts from './pages/alerts';
 import MyPage from './pages/mypage';
 import ViewPostPage from './pages/view-post';
+import SearchPage from './pages/search';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/alerts" element={<Alerts />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/view-post" element={<ViewPostPage />} />
+        <Route path="/search" element={<SearchPage />} />
       </Routes>
     </>
   );
