@@ -9,6 +9,7 @@ import MainAuthPage from './pages/main-auth';
 import SettingPage from './pages/setting';
 import Alerts from './pages/alerts';
 import MyPage from './pages/mypage';
+import CreatePostPage from './pages/create-post';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/main-auth" element={<MainAuthPage />} />
         <Route path="/alerts" element={<Alerts />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/create-post" element={<CreatePostPage />} />
       </Routes>
     </>
   );
