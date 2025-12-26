@@ -4,7 +4,7 @@ import Heart from '../../assets/icon/heart';
 import BigHeart from '../../assets/icon/bigheart';
 import defaultimg from '../../assets/img/defaultImage.png';
 import LF from '../../assets/icon/lf';
-import Anoymous from './anonymous';
+import Anonymous from './anonymous';
 import MoreActionButton from './moreactionbutton';
 
 export default function CommentItem({ content, name }) {
@@ -123,7 +123,7 @@ export default function CommentItem({ content, name }) {
           </div>
 
           <div className="flex gap-[13px] items-center">
-            <Anoymous
+            <Anonymous
               isAnonymous={isAnonymous}
               onToggle={() => setIsAnonymous((prev) => !prev)}
             />
