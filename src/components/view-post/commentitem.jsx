@@ -7,21 +7,19 @@ import LF from '../../assets/icon/lf';
 import Anoymous from './anonymous';
 import MoreActionButton from './moreactionbutton';
 
-export default function CommentItem() {
+export default function CommentItem({ content, name }) {
   const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(945);
+  const [likeCount, setLikeCount] = useState(0);
   const [isReplyOpen, setIsReplyOpen] = useState(false);
 
-  const isMine = true;
+  const [reply, setReply] = useState('');
+  const [replies, setReplies] = useState([]);
+  const [isAnonymous, setIsAnonymous] = useState(true);
 
   const handleLikeClick = () => {
     setLiked((prev) => !prev);
     setLikeCount((prev) => (liked ? prev - 1 : prev + 1));
   };
-
-  const [isAnonymous, setIsAnonymous] = useState(true);
-  const [reply, setReply] = useState('');
-  const [replies, setReplies] = useState([]);
 
   const handleReplySubmit = () => {
     if (!reply.trim()) return;
@@ -31,7 +29,6 @@ export default function CommentItem() {
       {
         id: Date.now(),
         content: reply,
-        isAnonymous,
         name: isAnonymous ? '익명' : '이하경',
       },
     ]);
@@ -43,39 +40,37 @@ export default function CommentItem() {
   return (
     <div>
       {/* ===== 댓글 본문 ===== */}
-      <div className="flex gap-3">
+      <div className="flex gap-[14px]">
         <img
           className="w-12 h-12 rounded-full border border-black"
           src={defaultimg}
-          alt="default"
+          alt="기본 이미지"
         />
 
         <div className="flex-1">
           <div className="flex items-center justify-between h-12">
             <span className="text-[20px] font-semibold font-pretendard">
-              익명
+              {name}
             </span>
-            <MoreActionButton isMine={isMine} />
+            <MoreActionButton isMine />
           </div>
 
-          <p className="mt-[9px] font-pretendard font-light text-[20px]">
-            저도 잘 모르겠어요 저도 도와주세요…
+          <p className="mt-[9px] font-light text-[20px] font-pretendard">
+            {content}
           </p>
 
-          <div className="mt-[15px] flex gap-4 text-xs text-[#818181]">
-            {/* 좋아요 */}
+          <div className="mt-[15px] flex gap-[30px] text-sm font-pretendard font-light">
             <button
               onClick={handleLikeClick}
-              className="flex items-center gap-1"
+              className="flex items-center gap-[10px]"
             >
               {liked ? <BigHeart /> : <Heart />}
               <span>{likeCount}</span>
             </button>
 
-            {/* 답글 버튼 */}
             <button
               onClick={() => setIsReplyOpen((prev) => !prev)}
-              className="flex items-center gap-1"
+              className="flex items-center gap-[10px]"
             >
               <Comment />
               <span>답글</span>
@@ -84,14 +79,12 @@ export default function CommentItem() {
         </div>
       </div>
 
-      {/* ===== 등록된 답글 목록 ===== */}
+      {/* ===== 답글 목록 ===== */}
       <div className="mt-[11px] ml-[60px]">
-        {replies.map((reply) => (
-          <div key={reply.id} className="flex mb-[18px]">
+        {replies.map((r) => (
+          <div key={r.id} className="flex mb-[18px]">
             <LF />
-
             <div className="ml-[25px] flex-1">
-              {/* 이름 + 더보기 */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <img
@@ -99,34 +92,32 @@ export default function CommentItem() {
                     className="w-10 h-10 border border-black rounded-full mr-[13px]"
                     alt="default"
                   />
-                  <span className="text-[18px] font-pretendard font-semibold">
-                    {reply.name}
+                  <span className="font-semibold font-pretendard text-[18px]">
+                    {r.name}
                   </span>
                 </div>
-
-                <MoreActionButton isMine={isMine} />
+                <MoreActionButton isMine />
               </div>
 
-              {/* 내용 */}
-              <p className="mt-[9px] ml-[53px] font-pretendard font-light">
-                {reply.content}
+              <p className="mt-[9px] ml-[53px] font-light font-pretendard">
+                {r.content}
               </p>
             </div>
           </div>
         ))}
       </div>
 
-      {/* ===== 답글 작성 영역 ===== */}
+      {/* ===== 답글 작성 ===== */}
       {isReplyOpen && (
         <div className="mt-[11px] ml-[60px]">
           <div className="flex items-center mb-[21px]">
             <LF />
             <img
               src={defaultimg}
-              className="w-10 h-10 border border-black rounded-full ml-[30px] mr-[13px]"
+              className="w-10 h-10 border border-black rounded-full ml-[25px] mr-[13px]"
               alt="default"
             />
-            <span className="text-[18px] font-pretendard font-semibold">
+            <span className="font-semibold font-pretendard text-[18px]">
               {isAnonymous ? '익명' : '이하경'}
             </span>
           </div>
@@ -136,10 +127,11 @@ export default function CommentItem() {
               isAnonymous={isAnonymous}
               onToggle={() => setIsAnonymous((prev) => !prev)}
             />
+
             <textarea
               rows={1}
               maxLength={400}
-              className="flex-1 resize-none border-b pb-[5px] font-pretendardtext-[#818181] leading-6 break-words focus:outline-none focus:text-black"
+              className="flex-1 resize-none border-b pb-[5px] focus:outline-none focus:text-black font-light font-pretendard"
               value={reply}
               onChange={(e) => setReply(e.target.value)}
               onKeyDown={(e) => {
@@ -147,7 +139,7 @@ export default function CommentItem() {
                   handleReplySubmit();
                 }
               }}
-              placeholder="댓글을 작성하세요..."
+              placeholder="답글을 작성하세요..."
             />
           </div>
         </div>
