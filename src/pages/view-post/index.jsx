@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import AuthHeader from '../../components/header/auth/ui';
 import defultimg from '../../assets/img/defaultImage.png';
 import CommentItem from '../../components/view-post/commentitem';
@@ -6,18 +7,42 @@ import FileDownload from '../../components/view-post/filedownload';
 import LinkBox from '../../components/view-post/linkbox';
 import Category from '../../components/view-post/category';
 import ReactionBar from '../../components/view-post/reactionbar';
+import Anoymous from '../../components/view-post/anonymous';
 
 export default function ViewPostPage() {
+  const [comments, setComments] = useState([
+    {
+      id: 1,
+      content: '저도 잘 모르겠어요 저도 도와주세요…',
+      name: '익명',
+    },
+  ]);
+
+  const [commentInput, setCommentInput] = useState('');
+
+  const handleCommentSubmit = () => {
+    if (!commentInput.trim()) return;
+
+    setComments((prev) => [
+      ...prev,
+      {
+        id: Date.now(),
+        content: commentInput,
+        name: '익명',
+      },
+    ]);
+
+    setCommentInput('');
+  };
+
   return (
     <div>
       <AuthHeader />
 
       <div className="flex justify-center pt-[46px] pb-[80px] pl-[385px] pr-[107px]">
-        {/* 전체 컨테이너 */}
         <div className="flex w-[1200px]">
           {/* ===== 왼쪽 : 게시글 ===== */}
           <section className="flex-1 pr-[88px]">
-            {/* 제목 */}
             <div className="flex justify-between items-center">
               <h1 className="text-[36px] font-pretendard font-semibold">
                 전공 선택 어려워요
@@ -32,11 +57,11 @@ export default function ViewPostPage() {
                   className="w-12 h-12 rounded-full border border-black"
                   alt="기본 이미지"
                 />
-                <div className="flex flex-col">
+                <div>
                   <div className="flex gap-[14px] items-center">
-                    <span className="font-pretendard text-black">김지유</span>
+                    <span>김지유</span>
                     <span>·</span>
-                    <span className="font-pretendard text-[#818181] text-xs font-light">
+                    <span className="text-xs text-[#818181]">
                       2025년 12월 19일
                     </span>
                   </div>
@@ -45,9 +70,10 @@ export default function ViewPostPage() {
                   </div>
                 </div>
               </div>
-              <ReactionBar initialLike={25} commentCount={147} />
+              <ReactionBar initialLike={25} commentCount={comments.length} />
             </div>
-            <div className="mt-[40px] leading-7 text-black whitespace-pre-line">
+
+            <div className="mt-[40px] leading-7 whitespace-pre-line">
               전공을 정하는 게 왜 이렇게까지 어려운 일인지 도무지 모르겠어요.
               그냥 하나 고르면 되는 문제인 것 같은데, 막상 진짜로 선택해야
               한다고 생각하면 머릿속이 하얘지고 아무것도 결정할 수 없게 돼요.
@@ -88,26 +114,50 @@ export default function ViewPostPage() {
 
           <div className="w-px bg-[#E5E5E5]" />
 
+          {/* ===== 오른쪽 : 댓글 ===== */}
           <section className="flex-1 pl-[88px]">
             <div className="flex flex-col gap-7">
-              <CommentItem />
-              <CommentItem />
-              <CommentItem />
+              {comments.map((comment) => (
+                <CommentItem
+                  key={comment.id}
+                  content={comment.content}
+                  name={comment.name}
+                />
+              ))}
             </div>
-            <div className="mt-[32px] border-t pt-4">
-              <p className="font-pretendard font-medium mb-[21px]">
+
+            {/* 댓글 작성 */}
+            <div className="mt-[32px] border-t pt-[28px]">
+              <p className="font-pretendard font-medium mb-[18px]">
                 게시글 댓글 작성하기
               </p>
-              <div className="flex gap-2">
+
+              {/* 사용자 정보 */}
+              <div className="flex items-center gap-[13px] mb-[14px]">
                 <img
-                  className="w-10 h-10 border border-black rounded-full"
                   src={defultimg}
-                  alt="기본 이미지"
+                  alt="프로필"
+                  className="w-10 h-10 rounded-full border border-black"
                 />
+                <span className="font-pretendard font-medium">이하경</span>
+              </div>
+
+              {/* 입력 영역 */}
+              <div className="flex items-center gap-[10px]">
+                <Anoymous isAnonymous={true} />
 
                 <input
-                  className="flex-1 border-b border-[#818181] pb-[5px] text-[#818181] font-pretendard font-light focus:outline-none"
+                  className="flex-1 border-b border-[#818181]
+                 pb-[6px] font-pretendard font-light
+                 focus:outline-none focus:border-black"
                   placeholder="댓글을 작성하세요..."
+                  value={commentInput}
+                  onChange={(e) => setCommentInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      handleCommentSubmit();
+                    }
+                  }}
                 />
               </div>
             </div>
