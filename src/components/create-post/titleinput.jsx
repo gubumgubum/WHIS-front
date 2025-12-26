@@ -1,4 +1,4 @@
-export default function TitleInput({ title }) {
+export default function TitleInput() {
   return (
     <input
       type="text"
