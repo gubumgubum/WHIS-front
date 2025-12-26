@@ -10,9 +10,9 @@ export default function Download() {
       <path
         d="M2 9L7 14M7 14L12 9M7 14V1M1 17H13"
         stroke="black"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
