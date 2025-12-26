@@ -7,7 +7,7 @@ import LF from '../../assets/icon/lf';
 import Anonymous from './anonymous';
 import MoreActionButton from './moreactionbutton';
 
-export default function CommentItem({ content, name }) {
+export default function CommentItem({ content, name, isMine }) {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
   const [isReplyOpen, setIsReplyOpen] = useState(false);
@@ -30,6 +30,7 @@ export default function CommentItem({ content, name }) {
         id: Date.now(),
         content: reply,
         name: isAnonymous ? '익명' : '이하경',
+        isMine: true,
       },
     ]);
 
@@ -49,10 +50,17 @@ export default function CommentItem({ content, name }) {
 
         <div className="flex-1">
           <div className="flex items-center justify-between h-12">
-            <span className="text-[20px] font-semibold font-pretendard">
-              {name}
-            </span>
-            <MoreActionButton isMine />
+            <div className="flex gap-[20px]">
+              <span className="text-[20px] font-semibold font-pretendard">
+                {name}
+              </span>
+              {isMine && (
+                <span className="text-center px-1 pb-1 w-[38px] h-[27px] rounded-xl bg-[#AC7F5E] text-white">
+                  My
+                </span>
+              )}
+            </div>
+            <MoreActionButton isMine={isMine} />
           </div>
 
           <p className="mt-[9px] font-light text-[20px] font-pretendard">
@@ -92,11 +100,19 @@ export default function CommentItem({ content, name }) {
                     className="w-10 h-10 border border-black rounded-full mr-[13px]"
                     alt="default"
                   />
-                  <span className="font-semibold font-pretendard text-[18px]">
-                    {r.name}
-                  </span>
+                  <div className="flex items-center gap-[20px]">
+                    <span className="font-semibold font-pretendard text-[18px]">
+                      {r.name}
+                    </span>
+
+                    {r.isMine && (
+                      <span className="text-center px-1 pb-1 w-[38px] h-[27px] rounded-xl bg-[#AC7F5E] text-white">
+                        MY
+                      </span>
+                    )}
+                  </div>
                 </div>
-                <MoreActionButton isMine />
+                <MoreActionButton isMine={r.isMine} />
               </div>
 
               <p className="mt-[9px] ml-[53px] font-light font-pretendard">

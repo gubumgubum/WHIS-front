@@ -21,6 +21,7 @@ export default function ViewPostPage() {
         id: Date.now(),
         content: commentInput,
         name: isAnonymous ? '익명' : '이하경',
+        isMine: true,
       },
     ]);
 
@@ -32,6 +33,7 @@ export default function ViewPostPage() {
       id: 1,
       content: '저도 잘 모르겠어요 저도 도와주세요…',
       name: '익명',
+      isMine: false,
     },
   ]);
 
@@ -116,6 +118,7 @@ export default function ViewPostPage() {
                   key={comment.id}
                   content={comment.content}
                   name={comment.name}
+                  isMine={comment.isMine}
                 />
               ))}
             </div>
