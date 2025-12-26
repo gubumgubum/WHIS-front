@@ -96,7 +96,7 @@ export default function CommentItem() {
                 <div className="flex items-center">
                   <img
                     src={defaultimg}
-                    className="w-12 h-12 border border-black rounded-full mr-[13px]"
+                    className="w-10 h-10 border border-black rounded-full mr-[13px]"
                     alt="default"
                   />
                   <span className="text-[18px] font-pretendard font-semibold">
@@ -136,7 +136,10 @@ export default function CommentItem() {
               isAnonymous={isAnonymous}
               onToggle={() => setIsAnonymous((prev) => !prev)}
             />
-            <input
+            <textarea
+              rows={1}
+              maxLength={400}
+              className="flex-1 resize-none border-b pb-[5px] font-pretendardtext-[#818181] leading-6 break-words focus:outline-none focus:text-black"
               value={reply}
               onChange={(e) => setReply(e.target.value)}
               onKeyDown={(e) => {
@@ -144,7 +147,6 @@ export default function CommentItem() {
                   handleReplySubmit();
                 }
               }}
-              className="flex-1 border-b pb-[5px] text-[#818181] font-pretendard focus:outline-none focus:text-black"
               placeholder="댓글을 작성하세요..."
             />
           </div>
