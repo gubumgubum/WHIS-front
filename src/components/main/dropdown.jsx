@@ -6,6 +6,8 @@ export default function Dropdown({
   defaultValue = '전체',
   onChange,
   scrollable = false,
+  width = '136px',
+  height = '48px',
 }) {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(defaultValue);
@@ -30,8 +32,9 @@ export default function Dropdown({
   return (
     <div ref={ref} className="relative w-[160px]">
       <button
+        style={{ width, height }}
         onClick={() => setOpen((prev) => !prev)}
-        className="w-[136px] h-[48px] flex items-center justify-between
+        className="flex items-center justify-between
                    px-4 py-2 rounded-2xl border border-[#818181]
                    shadow-sm bg-white"
       >
