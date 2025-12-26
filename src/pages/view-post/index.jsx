@@ -44,7 +44,6 @@ export default function ViewPostPage() {
       <AuthHeader />
       <div className="flex pt-[46px] pb-[34px] pl-[385px] pr-[107px]">
         <div className="flex w-[1429px]">
-          {/* ===== 왼쪽 : 게시글 ===== */}
           <section className="flex flex-col pr-[88px]">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-6">
@@ -110,7 +109,6 @@ export default function ViewPostPage() {
 
           <div className="w-px bg-[#E5E5E5]" />
 
-          {/* ===== 오른쪽 : 댓글 ===== */}
           <section className="flex-1 pl-[88px] mt-[42px]">
             <div className="flex flex-col gap-7">
               {comments.map((comment) => (
@@ -123,14 +121,11 @@ export default function ViewPostPage() {
               ))}
             </div>
             <div className="h-[180px]" />
-            {/* 댓글 작성 */}
             <div className="flex justify-start w-[790px] h-[171px] bg-white fixed bottom-[0] right-[70px] z-50">
               <div className="w-[750px] border-t border-[#818181] bg-white pt-[20px] ">
                 <p className="font-pretendard font-medium mb-[10px] ml-[62px]">
                   게시글 댓글 작성하기
                 </p>
-
-                {/* 사용자 정보 */}
                 <div className="flex items-center gap-[13px] mb-[15px] ml-[62px]">
                   <img
                     src={defultimg}
@@ -142,7 +137,6 @@ export default function ViewPostPage() {
                   </span>
                 </div>
 
-                {/* 입력 영역 */}
                 <div className="flex items-center gap-[13px]">
                   <Anoymous
                     isAnonymous={isAnonymous}
@@ -151,8 +145,8 @@ export default function ViewPostPage() {
 
                   <input
                     className="flex-1 border-b border-[#818181]
-                 pb-[5px] font-pretendard font-light
-                 focus:outline-none focus:border-black"
+                              pb-[5px] font-pretendard font-light
+                              focus:outline-none focus:border-black"
                     placeholder="댓글을 작성하세요..."
                     value={commentInput}
                     onChange={(e) => setCommentInput(e.target.value)}

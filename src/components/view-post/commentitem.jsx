@@ -40,7 +40,6 @@ export default function CommentItem({ content, name, isMine }) {
 
   return (
     <div>
-      {/* ===== 댓글 본문 ===== */}
       <div className="flex gap-[14px]">
         <img
           className="w-12 h-12 rounded-full border border-black"
@@ -87,7 +86,6 @@ export default function CommentItem({ content, name, isMine }) {
         </div>
       </div>
 
-      {/* ===== 답글 목록 ===== */}
       <div className="mt-[11px] ml-[60px]">
         {replies.map((r) => (
           <div key={r.id} className="flex mb-[18px]">
@@ -123,7 +121,6 @@ export default function CommentItem({ content, name, isMine }) {
         ))}
       </div>
 
-      {/* ===== 답글 작성 ===== */}
       {isReplyOpen && (
         <div className="mt-[11px] ml-[60px]">
           <div className="flex items-center mb-[21px]">
