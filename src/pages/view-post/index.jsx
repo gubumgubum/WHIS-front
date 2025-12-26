@@ -2,15 +2,16 @@ import { useState } from 'react';
 import AuthHeader from '../../components/header/auth/ui';
 import defultimg from '../../assets/img/defaultImage.png';
 import CommentItem from '../../components/view-post/commentitem';
-import ReportButton from '../../components/view-post/moreactionbutton';
 import FileDownload from '../../components/view-post/filedownload';
 import LinkBox from '../../components/view-post/linkbox';
 import Category from '../../components/view-post/category';
 import ReactionBar from '../../components/view-post/reactionbar';
 import Anoymous from '../../components/view-post/anonymous';
+import MoreActionButton from '../../components/view-post/moreactionbutton';
 
 export default function ViewPostPage() {
   const [isAnonymous, setIsAnonymous] = useState(true);
+  const isMyPost = true;
   const handleCommentSubmit = () => {
     if (!commentInput.trim()) return;
 
@@ -44,10 +45,17 @@ export default function ViewPostPage() {
           {/* ===== 왼쪽 : 게시글 ===== */}
           <section className="flex flex-col pr-[88px]">
             <div className="flex justify-between items-center">
-              <h1 className="text-[36px] font-pretendard font-semibold">
-                전공 선택 어려워요
-              </h1>
-              <ReportButton />
+              <div className="flex items-center gap-6">
+                <h1 className="text-[36px] font-pretendard font-semibold">
+                  전공 선택 어려워요
+                </h1>
+                {isMyPost && (
+                  <span className="text-center px-1 pb-1 w-[38px] h-[27px] rounded-xl bg-[#AC7F5E] text-white">
+                    My
+                  </span>
+                )}
+              </div>
+              <MoreActionButton isMine />
             </div>
 
             <div className="mt-[59px] flex justify-between">
@@ -77,6 +85,20 @@ export default function ViewPostPage() {
               전공을 정하는 게 왜 이렇게까지 어려운 일인지 도무지 모르겠어요.
               그냥 하나 고르면 되는 문제인 것 같은데, 막상 진짜로 선택해야
               한다고 생각하면 머릿속이 하얘지고 아무것도 결정할 수 없게 돼요.
+              하루 종일 이 생각만 하다 보면 시간이 이렇게 흘러도 되는 건가 싶을
+              정도로 불안해지고, 답은커녕 마음만 점점 더 조급해져요. 주변에서는
+              다들 아무렇지 않게 “너는 뭐 할 거야?”, “전공은 정했어?” 하고
+              묻는데, 그 말들이 왜 이렇게 아프게 들리는지 모르겠어요. 악의가
+              없다는 걸 알면서도 그 질문 하나하나가 괜히 제 가슴을 콕콕 찌르는
+              느낌이에요. 솔직히 말하면 아직 제가 뭘 좋아하는지도 잘 모르겠고,
+              뭘 잘할 수 있는지도 확신이 없어요. 디자인을 생각하면 감각 있어
+              보이고 자유롭고 재밌을 것 같다는 생각이 들다가도, 이걸 평생 가까이
+              두고 할 수 있을까, 언젠가는 질려서 후회하지 않을까 하는 걱정이
+              바로 따라와요. 프론트엔드를 떠올리면 내가 만든 화면이 바로 보이는
+              게 매력적으로 느껴지지만, 코딩이 막힐 때마다 스스로를 계속
+              의심하게 될 것 같아서 겁이 나요. 백엔드는 또 더 멀게 느껴지고,
+              나랑 정말 맞는 길인지 감도 안 잡혀요. 전공 하나를 고르는 일인데도
+              마치 인생 전체를 걸고 도박하는 기분이 들어서 더 무서운 것 같아요.
             </div>
             <div className="mt-[32px] flex flex-col gap-7">
               <FileDownload />
