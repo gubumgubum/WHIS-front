@@ -47,6 +47,16 @@ export default function CreatePostPage() {
             options={categories}
             value={selectedCategory}
             onChange={setSelectedCategory}
+            defaultValue="카테고리를 선택해주세요"
+            className="rounded-xl"
+            renderValue={(value, isDefault) => (
+              <span
+                className="font-pretendard"
+                style={{ color: isDefault ? '#818181' : '#000000' }}
+              >
+                {value}
+              </span>
+            )}
           />
           <div className="flex items-center justify-between w-[500px] h-[50px] px-4 border border-[#818181] rounded-xl">
             <span

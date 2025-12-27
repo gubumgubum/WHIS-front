@@ -8,6 +8,8 @@ export default function Dropdown({
   scrollable = false,
   width = '136px',
   height = '48px',
+  className = '',
+  renderValue,
 }) {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(defaultValue);
@@ -29,18 +31,23 @@ export default function Dropdown({
     onChange?.(value);
   };
 
+  const isDefault = selected === defaultValue;
+
   return (
     <div ref={ref} className="relative w-[160px]">
       <button
         style={{ width, height }}
         onClick={() => setOpen((prev) => !prev)}
-        className="flex items-center justify-between
+        className={`flex items-center justify-between
                    px-4 py-2 rounded-2xl border border-[#818181]
-                   shadow-sm bg-white"
+                   shadow-sm bg-white ${className}`}
       >
-        <span className="font-pretendard font-medium text-[20px]">
-          {selected}
-        </span>
+        {renderValue ? (
+          renderValue(selected, isDefault)
+        ) : (
+          <span className="font-pretendard">{selected}</span>
+        )}
+
         <BottomArrow />
       </button>
 
