@@ -18,7 +18,7 @@ export default function LinkAdd() {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-[10px]">
       <div className="flex gap-5">
         <input
           type="text"
@@ -29,12 +29,12 @@ export default function LinkAdd() {
         />
         <button
           onClick={addLink}
-          className="flex items-center justify-center gap-2 w-[130px] h-[50px] border border-[#818181] rounded-xl font-pretendard text-[#818181] text-[14px]"
+          className="flex items-center justify-center gap-2 w-[130px] h-[50px] border border-[#818181] rounded-xl font-pretendard text-[#818181] "
         >
           <LinkIcon /> 링크 추가
         </button>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-[10px]">
         {links.map((link, index) => (
           <div
             key={index}
