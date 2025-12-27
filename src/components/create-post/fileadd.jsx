@@ -18,7 +18,7 @@ export default function FileAdd() {
   };
   return (
     <div className="flex flex-col gap-[10px] font-pretendard">
-      <label className="relative flex items-center w-[500px] h-[50px] p-4 pl-[32px] border border-[#818181] rounded-xl text-[#818181] cursor-pointer group">
+      <label className="relative flex items-center w-[500px] h-[50px] p-4 pl-[43px] border border-[#818181] rounded-xl text-[#818181] cursor-pointer group">
         <input type="file" className="hidden" onChange={addFile} />
         <span className="absolute left-4 flex items-center justify-center w-6 h-6">
           <FileIcon color="#818181" />
