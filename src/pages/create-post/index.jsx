@@ -6,6 +6,8 @@ import ContentInput from '../../components/create-post/contentinput';
 import Dropdown from '../../components/main/dropdown';
 import LinkAdd from '../../components/create-post/linkadd';
 import FileAdd from '../../components/create-post/fileadd';
+import { createPost } from '../../apis/create-post/post';
+import { toast } from 'sonner';
 
 export default function CreatePostPage() {
   const navigate = useNavigate();
@@ -13,6 +15,7 @@ export default function CreatePostPage() {
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const categories = [
     '1학년',
@@ -27,15 +30,40 @@ export default function CreatePostPage() {
     '잡담',
     '학교',
   ];
+
   const isFormComplete = title && content && selectedCategory;
+
+  const handleSubmit = async () => {
+    if (!isFormComplete) return;
+    setLoading(true);
+
+    try {
+      const postId = await createPost({
+        title,
+        content,
+        category: selectedCategory,
+        anonymous: isAnonymous,
+        imageUrls: [],
+        links: [],
+      });
+
+      console.log('작성 완료, 게시글 ID:', postId);
+      navigate(`/post/${postId}`);
+    } catch (error) {
+      console.error(error);
+      toast.error(
+        error.response?.data?.message || '게시글 작성에 실패했습니다.',
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div>
       <AuthHeader />
-
       <div className="flex flex-col items-center mt-[100px] gap-[50px]">
         <p className="font-pretendard font-semibold text-[24px]">게시글 작성</p>
-
         <div className="flex flex-col gap-[20px]">
           <TitleInput value={title} onChange={setTitle} />
           <ContentInput value={content} onChange={setContent} />
@@ -60,22 +88,16 @@ export default function CreatePostPage() {
           />
           <div className="flex items-center justify-between w-[500px] h-[50px] px-4 border border-[#818181] rounded-xl">
             <span
-              className={`font-pretendard ${
-                isAnonymous ? 'text-[#818181]' : 'text-black'
-              }`}
+              className={`font-pretendard ${isAnonymous ? 'text-[#818181]' : 'text-black'}`}
             >
               익명으로 작성
             </span>
             <div
               onClick={() => setIsAnonymous(!isAnonymous)}
-              className={`w-[45px] h-[22px] rounded-full relative cursor-pointer transition-colors ${
-                isAnonymous ? 'bg-[#818181]' : 'bg-[#AC7F5E]'
-              }`}
+              className={`w-[45px] h-[22px] rounded-full relative cursor-pointer transition-colors ${isAnonymous ? 'bg-[#818181]' : 'bg-[#AC7F5E]'}`}
             >
               <div
-                className={`absolute top-[2px] w-[18px] h-[18px] bg-white rounded-full transition-all ${
-                  isAnonymous ? 'left-[2px]' : 'left-[25px]'
-                }`}
+                className={`absolute top-[2px] w-[18px] h-[18px] bg-white rounded-full transition-all ${isAnonymous ? 'left-[2px]' : 'left-[25px]'}`}
               />
             </div>
           </div>
@@ -87,14 +109,11 @@ export default function CreatePostPage() {
               취소
             </button>
             <button
-              className={`flex items-center justify-center w-[230px] h-[50px] rounded-xl font-pretendard text-white ${
-                isFormComplete
-                  ? 'bg-[#AC7F5E]'
-                  : 'bg-[#BA9A81] cursor-not-allowed'
-              }`}
-              disabled={!isFormComplete}
+              onClick={handleSubmit}
+              className={`flex items-center justify-center w-[230px] h-[50px] rounded-xl font-pretendard text-white ${isFormComplete ? 'bg-[#AC7F5E]' : 'bg-[#BA9A81] cursor-not-allowed'}`}
+              disabled={!isFormComplete || loading}
             >
-              작성 완료
+              {loading ? '작성 중...' : '작성 완료'}
             </button>
           </div>
         </div>
