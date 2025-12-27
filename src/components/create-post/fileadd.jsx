@@ -21,7 +21,7 @@ export default function FileAdd() {
       <label className="relative flex items-center w-[500px] h-[50px] p-4 pl-[32px] border border-[#818181] rounded-xl text-[#818181] cursor-pointer group">
         <input type="file" className="hidden" onChange={addFile} />
         <span className="absolute left-4 flex items-center justify-center w-6 h-6">
-          <FileIcon />
+          <FileIcon color="#818181" />
         </span>
         <span className="flex">파일 추가</span>
         <span className="absolute right-4 flex items-center justify-center">
