@@ -18,7 +18,7 @@ export default function LinkAdd() {
   };
 
   return (
-    <div className="flex flex-col gap-[10px]">
+    <div className="flex flex-col">
       <div className="flex gap-5">
         <input
           type="text"
@@ -34,11 +34,11 @@ export default function LinkAdd() {
           <LinkIcon /> 링크 추가
         </button>
       </div>
-      <div className="flex flex-col gap-[10px]">
+      <div className="flex flex-col">
         {links.map((link, index) => (
           <div
             key={index}
-            className="group relative flex items-center w-[500px] h-[50px] p-4 border border-black rounded-xl text-black"
+            className="group relative flex items-center w-[500px] h-[50px] p-4 border border-black rounded-xl text-black mt-[10px]"
           >
             <span className="truncate pr-10">{link}</span>
             <button
