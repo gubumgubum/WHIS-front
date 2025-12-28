@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import Bookmark from '../../assets/icon/bookmark';
 import Comment from '../../assets/icon/comment';
 import Heart from '../../assets/icon/heart';
 import { getPosts } from '../../apis/main-auth/main';
@@ -48,7 +47,7 @@ export default function PostBox({ category }) {
               </p>
               <p className="text-xs text-[#818181]">-</p>
               <p className="font-pretendard text-xs text-[#818181]">
-                {new Date(post.createdAt).toLocaleString()}
+                {new Date(post.createdAt).toLocaleDateString('ko-KR')}
               </p>
               <p className="bg-[#DDA67E] rounded-lg text-white font-pretendard border border-[#818181] text-[10px] w-[44px] h-[15px] text-center">
                 {post.category}
@@ -67,7 +66,6 @@ export default function PostBox({ category }) {
                   {post.comment || 0}
                 </p>
               </div>
-              <Bookmark />
             </div>
           </div>
         </div>
