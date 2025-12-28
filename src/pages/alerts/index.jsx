@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-
 import AlarmItem from '../../components/alerts/alarmitem';
 import AuthHeader from '../../components/header/auth/ui';
 import Dropdown from '../../components/main/dropdown';
@@ -10,9 +8,9 @@ import {
   getFilteredAlarms,
   readAlarm,
 } from '../../apis/alerts/alarm';
+import { toast } from 'sonner';
 
 function AlarmPage() {
-  // const navigate = useNavigate();
   const [alarms, setAlarms] = useState([]);
   const [filter, setFilter] = useState('전체');
 
@@ -27,17 +25,18 @@ function AlarmPage() {
       getFilteredAlarms(userId, false).then((res) => setAlarms(res.data));
     }
   }, [filter]);
-
   const handleAlarmClick = async (alarm) => {
     if (!alarm.read) {
-      await readAlarm(alarm.id);
-      setAlarms((prev) =>
-        prev.map((a) => (a.id === alarm.id ? { ...a, read: true } : a)),
-      );
-    }
+      try {
+        await readAlarm(alarm.id);
 
-    // 나중에 link 생기면 여기서 이동
-    // navigate(alarm.link);
+        setAlarms((prev) =>
+          prev.map((a) => (a.id === alarm.id ? { ...a, read: true } : a)),
+        );
+      } catch (e) {
+        toast.error('알림 읽음 처리 실패');
+      }
+    }
   };
 
   return (
