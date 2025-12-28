@@ -1,4 +1,4 @@
-export default function BottomArrow({ color = 'black' }) {
+export default function BottomArrow({ color = 'black', className, onClick }) {
   return (
     <svg
       width="18"
@@ -6,6 +6,8 @@ export default function BottomArrow({ color = 'black' }) {
       viewBox="0 0 18 18"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      onClick={onClick}
     >
       <path
         fillRule="evenodd"
