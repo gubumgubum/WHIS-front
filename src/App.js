@@ -13,6 +13,9 @@ import ViewPostPage from './pages/view-post';
 import SearchPage from './pages/search';
 import NotFoundPage from './pages/404';
 import CreatePostPage from './pages/create-post';
+import InquiryPage from './pages/inquiry';
+import ReportPage from './pages/report';
+import ReportHistoryPage from './pages/reporthistory';
 import AboutPage from './pages/about';
 
 function App() {
@@ -32,6 +35,9 @@ function App() {
         <Route path="/search" element={<SearchPage />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/create-post" element={<CreatePostPage />} />
+        <Route path="/inquiry" element={<InquiryPage />} />
+        <Route path="/report" element={<ReportPage />} />
+        <Route path="/reporthistory" element={<ReportHistoryPage />} />
         <Route path="/about" element={<AboutPage />} />
       </Routes>
     </>
