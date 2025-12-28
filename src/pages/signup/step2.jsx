@@ -5,6 +5,10 @@ import defaultProfile from '../../assets/img/defaultImage.png';
 import TextInput from '../../components/signin/textInput';
 import SelectButton from '../../components/signup/selectButton';
 import Button from '../../components/signin/button';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { DEFAULT_PROFILE_URL } from '../../constants/profile';
+import { postSignup } from '../../apis/postSignup';
+import { toast } from 'sonner';
 
 function Step2Page() {
   const [preview, setPreview] = useState(null);
@@ -23,6 +27,21 @@ function Step2Page() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isFormValid) return;
+
+    const payload = {
+      email,
+      password,
+      name,
+      grade: gradeMap[grade],
+      profileImageUrl: preview || DEFAULT_PROFILE_URL,
+    };
+    try {
+      await postSignup(payload);
+      toast.success('회원가입이 완료되었습니다.');
+      navigate('/signin');
+    } catch (error) {
+      toast.error('회원가입에 실패했습니다.');
+    }
   };
 
   return (
