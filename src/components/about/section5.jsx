@@ -17,16 +17,46 @@ export default function Section5() {
       </p>
       <div className="flex flex-col items-center justify-center gap-[54px]">
         <div className="flex items-center justify-center">
-          <Team src={gun} name="이건우" and="AI과" />
+          <Team
+            link={'https://github.com/lkw-k'}
+            src={gun}
+            name="이건우"
+            and="AI과"
+          />
         </div>
         <div className="flex items-center justify-center pr-[400px] gap-[100px]">
-          <Team src={gue} name="임규범" and="SW과" />
-          <Team src={seo} name="전세준" and="AI과" />
+          <Team
+            link={'https://github.com/Beom09'}
+            src={gue}
+            name="임규범"
+            and="SW과"
+          />
+          <Team
+            link={'https://github.com/jeonsejoon'}
+            src={seo}
+            name="전세준"
+            and="AI과"
+          />
         </div>
         <div className="flex items-center justify-center gap-[100px]">
-          <Team src={jiyu} name="김지유" and="SW과" />
-          <Team src={ha} name="이하경" and="IOT과" />
-          <Team src={gun} name="이건우" and="AI과" />
+          <Team
+            link={'https://github.com/jyuuuuu0'}
+            src={jiyu}
+            name="김지유"
+            and="SW과"
+          />
+          <Team
+            link={'https://github.com/hikeong'}
+            src={ha}
+            name="이하경"
+            and="IOT과"
+          />
+          <Team
+            link={'https://github.com/lkw-k'}
+            src={gun}
+            name="이건우"
+            and="AI과"
+          />
         </div>
       </div>
     </div>
