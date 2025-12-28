@@ -1,4 +1,4 @@
-import axios from '../axois';
+import axios from '../axios';
 
 export const getPosts = async (category) => {
   const response = await axios.get('/post', {
