@@ -2,8 +2,23 @@ import Exit from '../../assets/icon/exit';
 import RightArrow from '../../assets/icon/rightarrow';
 import AuthHeader from '../../components/header/auth/ui';
 import { Link } from 'react-router-dom';
+import { logout } from '../../apis/auth';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 function SettingPage() {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      sessionStorage.removeItem('accessToken');
+      navigate('/login');
+    } catch (error) {
+      console.error('로그아웃 실패', error);
+      toast.error('로그아웃에 실패했습니다.');
+    }
+  };
   return (
     <div>
       <AuthHeader />
@@ -52,7 +67,10 @@ function SettingPage() {
         </section>
 
         <section className="w-[698px] h-auto bg-[#FFF7F0] rounded-3xl shadow-md shadow-black/60 py-[30px] px-6">
-          <button className="flex justify-between items-center bg-white w-full text-[#C21414] font-pretendard font-medium p-3 rounded-xl text-left border-gray-400 border">
+          <button
+            onClick={handleLogout}
+            className="flex justify-between items-center bg-white w-full text-[#C21414] font-pretendard font-medium p-3 rounded-xl text-left border-gray-400 border"
+          >
             <span>로그아웃</span>
             <Exit />
           </button>
