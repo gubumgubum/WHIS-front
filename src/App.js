@@ -16,6 +16,7 @@ import CreatePostPage from './pages/create-post';
 import InquiryPage from './pages/inquiry';
 import ReportPage from './pages/report';
 import ReportHistoryPage from './pages/reporthistory';
+import AboutPage from './pages/about';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/inquiry" element={<InquiryPage />} />
         <Route path="/report" element={<ReportPage />} />
         <Route path="/reporthistory" element={<ReportHistoryPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </>
   );
