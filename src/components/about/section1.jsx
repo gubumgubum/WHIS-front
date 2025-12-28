@@ -39,7 +39,7 @@ export default function Section1() {
             </div>
           </div>
           <BottomArrow
-            className="cursor-pointar absolute bottom-[63px]"
+            className="cursor-pointer absolute bottom-[63px] animate-bounce"
             color="white"
             onClick={() => {
               document
