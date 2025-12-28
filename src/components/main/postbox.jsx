@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 import Comment from '../../assets/icon/comment';
 import Heart from '../../assets/icon/heart';
+import BigHeart from '../../assets/icon/bigheart';
 import { getPosts } from '../../apis/main-auth/main';
 import { toast } from 'sonner';
+import { togglePostLike } from '../../apis/main-auth/postlike';
 
 export default function PostBox({ category }) {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [likedPosts, setLikedPosts] = useState({});
 
   const CATEGORY_KR_MAP = {
     SCHOOL: '학교',
@@ -38,6 +41,30 @@ export default function PostBox({ category }) {
 
     fetchPosts();
   }, [category]);
+
+  const handleLikeClick = async (postId) => {
+    try {
+      await togglePostLike(postId);
+
+      setPosts((prevPosts) =>
+        prevPosts.map((post) =>
+          post.id === postId
+            ? {
+                ...post,
+                like: likedPosts[postId] ? post.like - 1 : post.like + 1,
+              }
+            : post,
+        ),
+      );
+
+      setLikedPosts((prev) => ({
+        ...prev,
+        [postId]: !prev[postId],
+      }));
+    } catch (error) {
+      toast.error('좋아요 처리에 실패했습니다.');
+    }
+  };
 
   if (loading) return <p>게시글 불러오는 중...</p>;
 
@@ -71,7 +98,16 @@ export default function PostBox({ category }) {
             </div>
             <div className="flex flex-row items-center gap-3">
               <div className="flex items-center gap-1">
-                <Heart />
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleLikeClick(post.id);
+                  }}
+                  className="cursor-pointer"
+                >
+                  {likedPosts[post.id] ? <BigHeart /> : <Heart />}
+                </div>
+
                 <p className="font-pretendard text-xs text-[#1E0D00]">
                   {post.like || 0}
                 </p>
