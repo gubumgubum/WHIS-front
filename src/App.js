@@ -17,6 +17,7 @@ import InquiryPage from './pages/inquiry';
 import ReportPage from './pages/report';
 import ReportHistoryPage from './pages/reporthistory';
 import AboutPage from './pages/about';
+import AcceptPage from './pages/accept/index';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path="/report" element={<ReportPage />} />
         <Route path="/reporthistory" element={<ReportHistoryPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/accept" element={<AcceptPage />} />
       </Routes>
     </>
   );
