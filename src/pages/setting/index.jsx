@@ -13,16 +13,15 @@ function SettingPage() {
     try {
       await logout();
       sessionStorage.removeItem('accessToken');
-      navigate('/login');
+      navigate('/signin');
     } catch (error) {
-      console.error('로그아웃 실패', error);
       toast.error('로그아웃에 실패했습니다.');
     }
   };
   return (
     <div>
       <AuthHeader />
-      <main className="flex flex-col items-center mt-[6.5rem]">
+      <main className="flex flex-col items-center mt-[6.5rem] mb-[80px]">
         <h1 className="text-xl font-pertendard font-extrabold mb-[30px]">
           계정 설정
         </h1>
