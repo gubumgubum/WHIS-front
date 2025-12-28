@@ -8,6 +8,20 @@ export default function PostBox({ category }) {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const CATEGORY_KR_MAP = {
+    SCHOOL: '학교',
+    GRADE_1: '1학년',
+    GRADE_2: '2학년',
+    GRADE_3: '3학년',
+    CODE_SHARE: '코드 공유',
+    LOVE: '연애',
+    JOB: '취업',
+    CERTIFICATE: '자격증',
+    CHAT: '잡담',
+    STUDY: '공부',
+    MAJOR: '전공',
+  };
+
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
@@ -50,7 +64,7 @@ export default function PostBox({ category }) {
                 {new Date(post.createdAt).toLocaleDateString('ko-KR')}
               </p>
               <p className="bg-[#DDA67E] rounded-lg text-white font-pretendard border border-[#818181] text-[10px] w-[44px] h-[15px] text-center">
-                {post.category}
+                {CATEGORY_KR_MAP[post.category] || post.category}
               </p>
             </div>
             <div className="flex flex-row items-center gap-3">
