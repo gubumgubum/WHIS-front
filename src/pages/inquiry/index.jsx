@@ -1,11 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import AuthHeader from '../../components/header/auth/ui';
-import File from '../../assets/icon/file';
 import ContentTextarea from '../../components/inquiry/content';
 import TitleInput from '../../components/inquiry/title';
-import Plus from '../../assets/icon/plus';
 import FileAdd from '../../components/create-post/fileadd';
 
 function InquiryPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-white">
       <AuthHeader />
@@ -24,14 +25,14 @@ function InquiryPage() {
           <div className="flex gap-3">
             <button
               type="button"
+              onClick={() => navigate(-1)}
               className="text-pretendard font-black flex-1 py-3 border border-gray-400 rounded-xl bg-white font-medium"
             >
               취소
             </button>
-
             <button
               type="button"
-              className="text-pretendard font-black  flex-1 py-3 rounded-xl bg-[#B8A38A] text-white font-medium"
+              className="text-pretendard font-black flex-1 py-3 rounded-xl bg-[#B8A38A] text-white font-medium"
             >
               작성 완료
             </button>

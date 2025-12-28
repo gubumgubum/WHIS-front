@@ -4,10 +4,12 @@ import { useState } from 'react';
 import TitleInput from '../../components/report/TitleInput';
 import Dtextarea from '../../components/report/Dtextarea';
 import FileAdd from '../../components/create-post/fileadd';
+import { useNavigate } from 'react-router-dom';
 
 function ReportPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState('신고 사유');
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg=white flex flex-col">
@@ -81,6 +83,7 @@ function ReportPage() {
             <button
               type="button"
               className="text-pretendard font-black flex-1 py-3 border border-gray-400 rounded-xl bg-white font-medium"
+              onClick={() => navigate(-1)}
             >
               취소
             </button>
