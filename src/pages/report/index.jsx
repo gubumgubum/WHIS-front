@@ -1,10 +1,9 @@
 import AuthHeader from '../../components/header/auth/ui';
-import File from '../../assets/icon/file';
 import DownArrow from '../../assets/icon/downarrow';
 import { useState } from 'react';
 import TitleInput from '../../components/report/TitleInput';
 import Dtextarea from '../../components/report/Dtextarea';
-import Plus from '../../assets/icon/Plus';
+import FileAdd from '../../components/create-post/fileadd';
 
 function ReportPage() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,27 +16,14 @@ function ReportPage() {
       <main className="flex-1 flex flex-col items-center justify-start pt-[120px] pb-[120px]">
         <h1 className="text-xl font-pretendard font-bold mb-8">신고 하기</h1>
 
-        <section className="w-[550px] h-[620px] bg-[#FFF7F0] rounded-3xl p-6 shadow-lg shadow-black/40">
+        <section className="w-[550px] min-h-[620px] h-auto bg-[#FFF7F0] rounded-3xl p-6 shadow-lg shadow-black/40">
           <TitleInput />
           <Dtextarea />
 
           <div className="mb-[15px]">
             <input type="file" id="file-upload" className="hidden" />
 
-            <label
-              htmlFor="file-upload"
-              className="flex items-center justify-between
-                         w-[500px] h-[50px]
-                         px-4
-                         border border-gray-400 rounded-xl
-                         bg-white text-sm cursor-pointer"
-            >
-              <div className="flex items-center gap-2 text-gray-600">
-                <File />
-                파일 추가
-              </div>
-              <Plus />
-            </label>
+            <FileAdd />
           </div>
 
           <div className="mb-[18px] w-[500px] relative">
@@ -59,7 +45,7 @@ function ReportPage() {
               <ul
                 className="absolute z-20 mt-2 w-full
                  bg-[#FFF7F0]
-                 border border-gray-300
+                 border border-[#818181]
                  rounded-xl
                  shadow-lg
                  overflow-hidden"
