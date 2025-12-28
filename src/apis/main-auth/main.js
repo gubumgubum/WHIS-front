@@ -1,8 +1,9 @@
 import axios from '../axois';
 
 export const getPosts = async (category) => {
-  const response = await axios.get('/post/check-all', {
-    params: { category },
+  const response = await axios.get('/post', {
+    params: category ? { category } : {},
   });
+
   return response.data;
 };
