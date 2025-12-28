@@ -1,8 +1,11 @@
+import { Toaster } from 'sonner';
+
 import { Routes, Route } from 'react-router-dom';
 import SigninPage from './pages/signin';
 import Step1Page from './pages/signup/step1';
 import Step2Page from './pages/signup/step2';
 import MainUnauthPage from './pages/main-unauth';
+import MainAuthPage from './pages/main-auth';
 import SettingPage from './pages/setting';
 import Alerts from './pages/alerts';
 import MyPage from './pages/mypage';

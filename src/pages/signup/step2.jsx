@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import logo from '../../assets/img/logo.png';
 import Upload from '../../assets/icon/upload';
 import defaultProfile from '../../assets/img/defaultImage.png';
@@ -11,20 +11,37 @@ import { postSignup } from '../../apis/postSignup';
 import { toast } from 'sonner';
 
 function Step2Page() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const { email, password } = location.state || {};
+
   const [preview, setPreview] = useState(null);
   const [name, setName] = useState('');
   const [grade, setGrade] = useState('');
 
+  useEffect(() => {
+    if (!email || !password) {
+      navigate('/signup-step1');
+    }
+  }, [email, password, navigate]);
+
   const isFormValid = name.trim() !== '' && grade !== '';
+
+  const gradeMap = {
+    '1학년': '1',
+    '2학년': '2',
+    '3학년': '3',
+  };
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    const imageUrl = URL.createObjectURL(file);
-    setPreview(imageUrl);
+
+    setPreview(URL.createObjectURL(file));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isFormValid) return;
 

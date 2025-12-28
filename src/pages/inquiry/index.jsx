@@ -2,7 +2,7 @@ import AuthHeader from '../../components/header/auth/ui';
 import File from '../../assets/icon/file';
 import ContentTextarea from '../../components/inquiry/content';
 import TitleInput from '../../components/inquiry/title';
-import Plus from '../../assets/icon/Plus';
+import Plus from '../../assets/icon/plus';
 
 function InquiryPage() {
   return (
