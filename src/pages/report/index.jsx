@@ -2,8 +2,8 @@ import AuthHeader from '../../components/header/auth/ui';
 import File from '../../assets/icon/file';
 import DownArrow from '../../assets/icon/downarrow';
 import { useState } from 'react';
-import TitleInput from './TitleInput';
-import Dtextarea from './Dtextarea';
+import TitleInput from '../../components/report/TitleInput';
+import Dtextarea from '../../components/report/Dtextarea';
 import Plus from '../../assets/icon/Plus';
 
 function ReportPage() {
