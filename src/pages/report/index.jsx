@@ -16,15 +16,13 @@ function ReportPage() {
       <AuthHeader />
 
       <main className="flex-1 flex flex-col items-center justify-start pt-[120px] pb-[120px]">
-        <h1 className="text-xl font-pretendard font-bold mb-8">신고 하기</h1>
+        <h1 className="text-xl font-pretendard font-bold mb-8">신고 접수</h1>
 
         <section className="w-[550px] min-h-[620px] h-auto bg-[#FFF7F0] rounded-3xl p-6 shadow-lg shadow-black/40">
           <TitleInput />
           <Dtextarea />
 
           <div className="mb-[15px]">
-            <input type="file" id="file-upload" className="hidden" />
-
             <FileAdd />
           </div>
 
