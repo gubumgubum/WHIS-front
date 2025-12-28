@@ -52,7 +52,9 @@ export default function PostBox({ category }) {
             {post.title}
           </p>
           <p className="font-pretendard text-sm text-[#818181] w-[423px] h-[51px]">
-            {post.content}
+            {post.content.length > 85
+              ? post.content.slice(0, 85) + '...'
+              : post.content}
           </p>
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row gap-1">
