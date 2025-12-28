@@ -13,6 +13,7 @@ import ViewPostPage from './pages/view-post';
 import SearchPage from './pages/search';
 import NotFoundPage from './pages/404';
 import CreatePostPage from './pages/create-post';
+import AboutPage from './pages/about';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/search" element={<SearchPage />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/create-post" element={<CreatePostPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </>
   );
