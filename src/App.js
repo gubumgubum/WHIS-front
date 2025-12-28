@@ -6,6 +6,7 @@ import MainUnauthPage from './pages/main-unauth';
 import SettingPage from './pages/setting';
 import InquiryPage from './pages/inquiry';
 import ReportPage from './pages/report';
+import ReportHistoryPage from './pages/reporthistory';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/setting" element={<SettingPage />} />
       <Route path="/inquiry" element={<InquiryPage />} />
       <Route path="/report" element={<ReportPage />} />
+      <Route path="/reporthistory" element={<ReportHistoryPage />} />
     </Routes>
   );
 }
