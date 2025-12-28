@@ -1,44 +1,60 @@
 import { useState } from 'react';
 import AuthHeader from '../../components/header/auth/ui';
-import Dropdown from '../../components/main/dropdown';
 import SearchBar from '../../components/search/searchbar';
 import PostBox from '../../components/main/postbox';
+import { searchPosts } from '../../apis/search/search';
+import { toast } from 'sonner';
 
 export default function SearchPage() {
-  const [selected, setSelected] = useState('전체');
-  const categories = [
-    '전체',
-    '1학년',
-    '2학년',
-    '3학년',
-    '공부',
-    '전공',
-    '코드 공유',
-    '자격증',
-    '취업',
-    '연애',
-    '잡담',
-    '학교',
-  ];
+  const [keyword, setKeyword] = useState('');
+  const [posts, setPosts] = useState([]);
+  const [hasSearched, setHasSearched] = useState(false);
+
+  const handleSearch = async () => {
+    if (!keyword.trim()) {
+      toast.warning('검색어를 입력해주세요');
+      return;
+    }
+
+    try {
+      setHasSearched(true);
+      const data = await searchPosts({ keyword });
+      setPosts(data);
+    } catch (error) {
+      toast.error('검색을 실패했습니다.');
+    }
+  };
+
+  const renderContent = () => {
+    if (!hasSearched) {
+      return (
+        <p className="font-pretendard text-[#818181]">검색어를 입력하세요</p>
+      );
+    }
+
+    if (hasSearched && posts.length === 0) {
+      return (
+        <p className="font-pretendard text-[#818181]">검색 결과가 없습니다</p>
+      );
+    }
+
+    return <PostBox posts={posts} />;
+  };
 
   return (
     <div className="min-h-screen">
       <AuthHeader />
 
       <div className="flex flex-col items-center my-[50px]">
-        <div className="relative flex justify-center items-center mb-[50px]">
-          <div className="w-full max-w-[600px]">
-            <SearchBar />
-          </div>
-          <div className="absolute left-[580px]">
-            <Dropdown
-              options={categories}
-              value={selected}
-              onChange={setSelected}
-            />
-          </div>
+        <div className="relative flex items-center mb-[50px]">
+          <SearchBar
+            value={keyword}
+            onChange={setKeyword}
+            onSubmit={handleSearch}
+          />
         </div>
-        <PostBox />
+
+        {renderContent()}
       </div>
     </div>
   );
