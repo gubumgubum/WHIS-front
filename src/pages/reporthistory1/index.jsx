@@ -5,8 +5,17 @@ const dummyData = [
   {
     id: 1,
     name: '규범',
-    type: '욕설/비하 사용',
+    type: '기타',
     date: '12월 1일',
+    status: '승인',
+    hasFile: true,
+  },
+  {
+    id: 1,
+    name: '건우',
+    type: '개인정보 노출',
+    date: '11월 2일',
+    status: '거절',
     hasFile: true,
   },
 ];
@@ -45,7 +54,6 @@ function HistoryPage() {
               key={item.id}
               className="w-[550px] h-[446px] bg-[#FFF8F0] rounded-[20px] p-5 shadow-md border border-[#838383]"
             >
-              {/* 상단 정보 */}
               <div className="flex justify-between items-center mb-4 text-sm">
                 <div className="flex items-center gap-3">
                   <span className="font-semibold">이름 : {item.name}</span>
@@ -53,26 +61,36 @@ function HistoryPage() {
                     {item.type}
                   </span>
                 </div>
-                <span className="text-gray-500">{item.date}</span>
+
+                <div className="flex items-center gap-2 text-sm">
+                  <span
+                    className={`px-3 py-[2px] rounded-full text-xs ${
+                      item.status === '승인'
+                        ? 'bg-[#C8F7B8] text-black'
+                        : 'bg-[#FABABA] text-black'
+                    }`}
+                  >
+                    {item.status}
+                  </span>
+                  <span className="text-gray-500">{item.date}</span>
+                </div>
               </div>
 
-              {/* 내용 박스 (비워둠) */}
               <div className="bg-white border border-[#838383] rounded-lg w-[500px] min-h-[50px] h-auto mb-[8px] px-4 py-3">
-                <p className="text-[14px] text-gray-800 font-pretendard font-bold">
+                <p className="text-[14px] text-gray-800 font-pretendard font-medium">
                   전세준이 딴짓해요!!!
                 </p>
               </div>
 
               <div className="bg-white border border-[#838383] rounded-lg w-[500px] min-h-[254px] h-auto p-5">
-                <p className="text-[14px] text-gray-700 leading-[1.7] font-pretendard font-bold">
+                <p className="text-[14px] text-gray-700 leading-[1.7] font-pretendard font-medium">
                   세준이가 아이디어 페스티벌 시간에 사보과제만 해요 진짜
                   망했어요..ㅠㅠ 빠르게 처리 부탁드립니다.
                 </p>
               </div>
 
-              {/* 첨부파일 */}
               {item.hasFile && (
-                <div className="w-[500px] mt-4 bg-white border border-[#838383] rounded-lg px-3 py-2 flex justify-between items-center text-sm font-bold">
+                <div className="w-[500px] mt-4 bg-white border border-[#838383] rounded-lg px-3 py-2 flex justify-between items-center text-sm font-pretendard font-medium">
                   <span>세준이가 과제하는 사진.png</span>
                   <span className="cursor-pointer">⬇</span>
                 </div>
