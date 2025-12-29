@@ -9,7 +9,7 @@ export default function Setting() {
     >
       <mask
         id="mask0_816_1885"
-        maskType="luminance"
+        masktype="luminance"
         maskUnits="userSpaceOnUse"
         x="1"
         y="2"
