@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import Setting from '../../assets/icon/setting';
-import { DEFAULT_PROFILE_URL } from '../../constants/profile';
+
 import { useState } from 'react';
 import Pencil from '../../assets/icon/pencil';
 
 export default function ProfileCard() {
-  const [preview, setPreview] = useState(DEFAULT_PROFILE_URL);
+  const [preview, setPreview] = useState('https://via.placeholder.com/100');
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
