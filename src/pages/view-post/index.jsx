@@ -10,7 +10,6 @@ import Anoymous from '../../components/view-post/anonymous';
 import MoreActionButton from '../../components/view-post/moreactionbutton';
 
 export default function ViewPostPage() {
-  const postId = 1; // 임시
   const [isAnonymous, setIsAnonymous] = useState(true);
   const [commentInput, setCommentInput] = useState('');
   const [comments, setComments] = useState([
