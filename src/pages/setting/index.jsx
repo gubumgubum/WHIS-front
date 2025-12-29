@@ -57,9 +57,23 @@ function SettingPage() {
           <h2 className="font-pretendard font-bold mb-4">이용 약관</h2>
           <Link
             to="/service"
-            className="flex justify-between items-center bg-[#FFFFFF] w-full border-gray-400 border p-3 rounded-xl text-left font-pretendard font-medium"
+            className="flex justify-between items-center bg-[#FFFFFF] w-full border-gray-400 border p-3 rounded-xl text-left font-pretendard font-medium  mb-5"
           >
             <span>서비스 이용 약관</span>
+            <RightArrow />
+          </Link>
+          <Link
+            to="/privacy-policy"
+            className="flex justify-between items-center bg-[#FFFFFF] w-full border-gray-400 border p-3 rounded-xl text-left font-pretendard font-medium  mb-5"
+          >
+            <span>개인 정보 처리 방침</span>
+            <RightArrow />
+          </Link>
+          <Link
+            to="/addition"
+            className="flex justify-between items-center bg-[#FFFFFF] w-full border-gray-400 border p-3 rounded-xl text-left font-pretendard font-medium"
+          >
+            <span>추가 약관/안내</span>
             <RightArrow />
           </Link>
         </section>

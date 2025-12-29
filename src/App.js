@@ -15,6 +15,11 @@ import NotFoundPage from './pages/404';
 import CreatePostPage from './pages/create-post';
 import InquiryPage from './pages/inquiry';
 import ReportPage from './pages/report';
+import AboutPage from './pages/about';
+import AcceptPage from './pages/accept/index';
+import Service from './pages/accept/service';
+import PrivacyPolicy from './pages/accept/privacy-policy';
+import Addition from './pages/accept/addition';
 import SentPage from './pages/reporthistory';
 import HistoryPage from './pages/reporthistory1';
 
@@ -37,6 +42,11 @@ function App() {
         <Route path="/create-post" element={<CreatePostPage />} />
         <Route path="/inquiry" element={<InquiryPage />} />
         <Route path="/report" element={<ReportPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/accept" element={<AcceptPage />} />
+        <Route path="/service" element={<Service />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/addition" element={<Addition />} />
         <Route path="/sent" element={<SentPage />} />
         <Route path="/history" element={<HistoryPage />} />
       </Routes>
