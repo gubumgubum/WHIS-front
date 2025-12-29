@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import Bookmark from '../../assets/icon/bookmark';
 import Comment from '../../assets/icon/comment';
 import Heart from '../../assets/icon/heart';
 import { postlist } from '../../mock/post';
@@ -44,7 +43,6 @@ export default function PostBox() {
                   {post.comment}
                 </p>
               </div>
-              <Bookmark />
             </div>
           </div>
         </div>

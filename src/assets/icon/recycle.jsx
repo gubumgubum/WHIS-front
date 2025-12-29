@@ -1,7 +1,7 @@
 export default function Recycle({ className = '' }) {
   return (
     <svg
-      className={`fill-current text-black focus:text-red-500 ${className}`}
+      className={`fill-current transition-colors ${className}`}
       width="15"
       height="15"
       viewBox="0 0 15 15"
