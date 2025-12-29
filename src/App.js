@@ -17,7 +17,6 @@ import InquiryPage from './pages/inquiry';
 import ReportPage from './pages/report';
 import SentPage from './pages/reporthistory';
 import HistoryPage from './pages/reporthistory1';
-import AgreePage from './pages/conditions';
 
 function App() {
   return (
@@ -41,8 +40,6 @@ function App() {
 
         <Route path="/sent" element={<SentPage />} />
         <Route path="/history" element={<HistoryPage />} />
-
-        <Route path="/conditions" element={<AgreePage />} />
       </Routes>
     </>
   );
