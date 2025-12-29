@@ -16,7 +16,7 @@ function SettingPage() {
           <h2 className="font-pretendard font-bold mb-4">개인 정보 보호</h2>
 
           <Link
-            to="/report-view"
+            to="/sent"
             className="flex justify-between items-center font-pretendard font-medium bg-white w-full border-gray-400 border p-3 rounded-xl mb-5 text-left"
           >
             <span>신고 이력 보기</span>
@@ -24,7 +24,7 @@ function SettingPage() {
           </Link>
 
           <Link
-            to="/report-received"
+            to="/history"
             className="flex justify-between items-center font-pretendard font-medium bg-white w-full border-gray-400 border p-3 rounded-xl mb-5 text-left"
           >
             <span>신고 받은 이력</span>
