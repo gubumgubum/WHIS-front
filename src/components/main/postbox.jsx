@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Bookmark from '../../assets/icon/bookmark';
 import Comment from '../../assets/icon/comment';
 import Heart from '../../assets/icon/heart';
@@ -5,7 +6,7 @@ import { postlist } from '../../mock/post';
 
 export default function PostBox() {
   return (
-    <div className="flex flex-col gap-[20px]">
+    <Link to="/view-post" className="flex flex-col gap-[20px]">
       {postlist.map((post) => (
         <div
           key={post.id}
@@ -48,6 +49,6 @@ export default function PostBox() {
           </div>
         </div>
       ))}
-    </div>
+    </Link>
   );
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import AuthHeader from '../../components/header/auth/ui';
 import defultimg from '../../assets/img/defaultImage.png';
 import CommentItem from '../../components/view-post/commentitem';
@@ -9,16 +9,10 @@ import ReactionBar from '../../components/view-post/reactionbar';
 import Anoymous from '../../components/view-post/anonymous';
 import MoreActionButton from '../../components/view-post/moreactionbutton';
 
-import { getCommentCount, postComment } from '../../apis/view-post/comment';
-
 export default function ViewPostPage() {
   const postId = 1; // 임시
-  const userId = 10; // 임시 (JWT 생기면 교체)
-
   const [isAnonymous, setIsAnonymous] = useState(true);
   const [commentInput, setCommentInput] = useState('');
-  const [commentCount, setCommentCount] = useState(0);
-
   const [comments, setComments] = useState([
     {
       id: 1,
@@ -28,46 +22,21 @@ export default function ViewPostPage() {
     },
   ]);
 
-  const isMyPost = true;
+  const [commentCount, setCommentCount] = useState(comments.length);
 
-  // 🔹 댓글 개수 조회
-  useEffect(() => {
-    getCommentCount(postId).then((res) => {
-      setCommentCount(res.data);
-    });
-  }, [postId]);
-
-  // 🔹 댓글 작성
-  const handleCommentSubmit = async () => {
+  const handleCommentSubmit = () => {
     if (!commentInput.trim()) return;
 
-    try {
-      const res = await postComment({
-        postId,
-        userId,
-        content: commentInput,
-        isAnonymous,
-      });
+    const newComment = {
+      id: comments.length + 1,
+      content: commentInput,
+      name: isAnonymous ? '익명' : '이하경',
+      isMine: true,
+    };
 
-      // 화면에 바로 추가
-      setComments((prev) => [
-        ...prev,
-        {
-          id: res.data.id,
-          content: res.data.content,
-          name: isAnonymous ? '익명' : '이하경',
-          isMine: true,
-        },
-      ]);
-
-      setCommentInput('');
-
-      // 댓글 개수 다시 조회
-      const countRes = await getCommentCount(postId);
-      setCommentCount(countRes.data);
-    } catch (e) {
-      console.error('댓글 작성 실패', e);
-    }
+    setComments((prev) => [...prev, newComment]);
+    setCommentCount((prev) => prev + 1);
+    setCommentInput('');
   };
 
   return (
@@ -79,16 +48,9 @@ export default function ViewPostPage() {
           {/* 좌측 게시글 영역 */}
           <section className="flex flex-col pr-[88px]">
             <div className="flex justify-between items-center">
-              <div className="flex items-center gap-6">
-                <h1 className="text-[36px] font-pretendard font-semibold">
-                  전공 선택 어려워요
-                </h1>
-                {isMyPost && (
-                  <span className="text-center px-1 pb-1 w-[38px] h-[27px] rounded-xl bg-[#AC7F5E] text-white">
-                    My
-                  </span>
-                )}
-              </div>
+              <h1 className="text-[36px] font-pretendard font-semibold">
+                게시글 제목
+              </h1>
               <MoreActionButton isMine />
             </div>
 
@@ -101,10 +63,10 @@ export default function ViewPostPage() {
                 />
                 <div>
                   <div className="flex gap-[14px] items-center">
-                    <span>김지유</span>
+                    <span>이하경</span>
                     <span>·</span>
                     <span className="text-xs text-[#818181]">
-                      2025년 12월 19일
+                      2025년 12월 29일
                     </span>
                   </div>
                   <div className="mt-1">
@@ -117,7 +79,7 @@ export default function ViewPostPage() {
             </div>
 
             <div className="font-pretendard mt-[40px] leading-7 whitespace-pre-line max-w-[500px]">
-              전공을 정하는 게 왜 이렇게까지 어려운 일인지 도무지 모르겠어요...
+              게시글 내용...
             </div>
 
             <div className="mt-[32px] flex flex-col gap-7">
@@ -144,7 +106,7 @@ export default function ViewPostPage() {
             <div className="h-[180px]" />
 
             {/* 댓글 작성 */}
-            <div className="flex justify-start w-[790px] h-[171px] bg-white fixed bottom-0 right-[70px] z-50">
+            <div className="flex justify-start w-[650px] h-[171px] bg-white fixed bottom-0 right-[50px] z-50">
               <div className="w-[750px] border-t border-[#818181] bg-white pt-[20px]">
                 <p className="font-pretendard font-medium mb-[10px] ml-[62px]">
                   게시글 댓글 작성하기
