@@ -3,6 +3,7 @@ import Exit from '../../assets/icon/exit';
 import RightArrow from '../../assets/icon/rightarrow';
 import AuthHeader from '../../components/header/auth/ui';
 import { Link, useNavigate } from 'react-router-dom';
+import { logout } from '../../apis/auth';
 
 function SettingPage() {
   const navigate = useNavigate();
