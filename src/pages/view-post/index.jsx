@@ -26,11 +26,11 @@ const CATEGORY_KR_MAP = {
 };
 
 export default function ViewPostPage() {
-  const { id } = useParams();
+  const { postId } = useParams();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // 댓글 (UI 유지)
+  // 댓글 UI
   const [isAnonymous, setIsAnonymous] = useState(true);
   const [commentInput, setCommentInput] = useState('');
   const [comments, setComments] = useState([
@@ -41,15 +41,13 @@ export default function ViewPostPage() {
       isMine: false,
     },
   ]);
-
   const [commentCount, setCommentCount] = useState(comments.length);
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await instance.get('/post');
-        const found = res.data.find((p) => p.id === Number(id));
-        setPost(found || null);
+        const res = await instance.get(`/post/${postId}`);
+        setPost(res.data);
       } catch (e) {
         console.error(e);
         setPost(null);
@@ -58,7 +56,7 @@ export default function ViewPostPage() {
       }
     };
     fetchPost();
-  }, [id]);
+  }, [postId]);
 
   const handleCommentSubmit = () => {
     if (!commentInput.trim()) return;
@@ -72,7 +70,6 @@ export default function ViewPostPage() {
         isMine: true,
       },
     ]);
-
     setCommentCount((prev) => prev + 1);
     setCommentInput('');
   };
@@ -171,7 +168,7 @@ export default function ViewPostPage() {
               ))}
             </div>
 
-            {/* 댓글 작성 (고정) */}
+            {/* 댓글 작성 */}
             <div
               className="flex justify-start w-[650px] h-[171px] bg-white
                 fixed bottom-0 right-[50px] z-50"
@@ -197,48 +194,6 @@ export default function ViewPostPage() {
                     isAnonymous={isAnonymous}
                     onToggle={() => setIsAnonymous((prev) => !prev)}
                   />
-
-                  <input
-                    className="flex-1 border-b border-[#818181] pb-[5px]
-                   font-pretendard font-light
-                   focus:outline-none focus:border-black"
-                    placeholder="댓글을 작성하세요..."
-                    value={commentInput}
-                    onChange={(e) => setCommentInput(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') handleCommentSubmit();
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-            {/* 댓글 작성 (고정) */}
-            <div
-              className="flex justify-start w-[650px] h-[171px] bg-white
-                fixed bottom-0 right-[50px] z-50"
-            >
-              <div className="w-[750px] border-t border-[#818181] bg-white pt-[20px]">
-                <p className="font-pretendard font-medium mb-[10px] ml-[62px]">
-                  게시글 댓글 작성하기
-                </p>
-
-                <div className="flex items-center gap-[13px] mb-[15px] ml-[62px]">
-                  <img
-                    src={defultimg}
-                    alt="프로필"
-                    className="w-10 h-10 rounded-full border border-black"
-                  />
-                  <span className="font-pretendard font-medium">
-                    {isAnonymous ? '익명' : '나'}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-[13px] ml-[62px]">
-                  <Anoymous
-                    isAnonymous={isAnonymous}
-                    onToggle={() => setIsAnonymous((prev) => !prev)}
-                  />
-
                   <input
                     className="flex-1 border-b border-[#818181] pb-[5px]
                    font-pretendard font-light
