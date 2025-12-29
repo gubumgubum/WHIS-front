@@ -58,6 +58,11 @@ export default function Section5() {
             and="AI과"
           />
         </div>
+        <div className="flex items-center justify-center gap-[247px] font-medium text-[32px]">
+          <p>Front-End</p>
+          <p>Back-End</p>
+          <p>Design</p>
+        </div>
       </div>
     </div>
   );
