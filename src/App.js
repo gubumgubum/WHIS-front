@@ -15,17 +15,8 @@ import NotFoundPage from './pages/404';
 import CreatePostPage from './pages/create-post';
 import InquiryPage from './pages/inquiry';
 import ReportPage from './pages/report';
-<<<<<<< HEAD
 import SentPage from './pages/reporthistory';
 import HistoryPage from './pages/reporthistory1';
-=======
-import ReportHistoryPage from './pages/reporthistory';
-import AboutPage from './pages/about';
-import AcceptPage from './pages/accept/index';
-import Service from './pages/accept/service';
-import PrivacyPolicy from './pages/accept/privacy-policy';
-import Addition from './pages/accept/addition';
->>>>>>> 0fb9bd835a55d2bb2fe4dc9f7570212afc1788a9
 
 function App() {
   return (
@@ -46,18 +37,8 @@ function App() {
         <Route path="/create-post" element={<CreatePostPage />} />
         <Route path="/inquiry" element={<InquiryPage />} />
         <Route path="/report" element={<ReportPage />} />
-<<<<<<< HEAD
-
         <Route path="/sent" element={<SentPage />} />
         <Route path="/history" element={<HistoryPage />} />
-=======
-        <Route path="/reporthistory" element={<ReportHistoryPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/accept" element={<AcceptPage />} />
-        <Route path="/service" element={<Service />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/addition" element={<Addition />} />
->>>>>>> 0fb9bd835a55d2bb2fe4dc9f7570212afc1788a9
       </Routes>
     </>
   );
