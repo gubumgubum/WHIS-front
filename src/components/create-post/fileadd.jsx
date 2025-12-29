@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Plus from '../../assets/icon/Plus';
+import Plus from '../../assets/icon/plus';
 import Recycle from '../../assets/icon/recycle';
 import FileIcon from '../../assets/icon/file';
 

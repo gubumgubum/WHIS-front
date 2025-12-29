@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Plus from '../../assets/icon/Plus';
+import Plus from '../../assets/icon/plus';
 
 export default function CreatePost({ className }) {
   return (
