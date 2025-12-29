@@ -59,7 +59,7 @@ function SentPage() {
             >
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center">
-                  <span className="ml-2 font-bold font-pretendard">댓글</span>
+                  <span className="ml-2 font-medium font-pretendard">댓글</span>
 
                   <span
                     className="
@@ -79,8 +79,12 @@ function SentPage() {
 
                 <div className="flex items-center gap-2 text-sm">
                   <span
-                    className={`px-3 py-[2px] rounded-full text-xs ${
-                      item.status === '승인' ? 'bg-[#C8F7B8]' : 'bg-[#CDE4FF]'
+                    className={`px-3 py-[2px] rounded-full text-xs text-black ${
+                      item.status === '승인'
+                        ? 'bg-[#C8F7B8]'
+                        : item.status === '거절'
+                          ? 'bg-[#FABABA]'
+                          : 'bg-[#CDE4FF]'
                     }`}
                   >
                     {item.status}
