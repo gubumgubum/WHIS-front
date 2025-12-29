@@ -1,10 +1,9 @@
+import { toast } from 'sonner';
 import Exit from '../../assets/icon/exit';
 import RightArrow from '../../assets/icon/rightarrow';
 import AuthHeader from '../../components/header/auth/ui';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../apis/auth';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'sonner';
 
 function SettingPage() {
   const navigate = useNavigate();
@@ -15,14 +14,13 @@ function SettingPage() {
       sessionStorage.removeItem('accessToken');
       navigate('/signin');
     } catch (error) {
-      console.error(error);
       toast.error('로그아웃에 실패했습니다.');
     }
   };
   return (
     <div>
       <AuthHeader />
-      <main className="flex flex-col items-center mt-[6.5rem] mb-[80px]">
+      <main className="flex flex-col items-center mt-[6.5rem]">
         <h1 className="text-xl font-pertendard font-extrabold mb-[30px]">
           계정 설정
         </h1>
@@ -31,7 +29,7 @@ function SettingPage() {
           <h2 className="font-pretendard font-bold mb-4">개인 정보 보호</h2>
 
           <Link
-            to="/report-view"
+            to="/sent"
             className="flex justify-between items-center font-pretendard font-medium bg-white w-full border-gray-400 border p-3 rounded-xl mb-5 text-left"
           >
             <span>신고 이력 보기</span>
@@ -39,7 +37,7 @@ function SettingPage() {
           </Link>
 
           <Link
-            to="/report-received"
+            to="/history"
             className="flex justify-between items-center font-pretendard font-medium bg-white w-full border-gray-400 border p-3 rounded-xl mb-5 text-left"
           >
             <span>신고 받은 이력</span>
@@ -59,23 +57,9 @@ function SettingPage() {
           <h2 className="font-pretendard font-bold mb-4">이용 약관</h2>
           <Link
             to="/service"
-            className="flex justify-between items-center bg-[#FFFFFF] w-full border-gray-400 border p-3 rounded-xl text-left font-pretendard font-medium  mb-5"
-          >
-            <span>서비스 이용 약관</span>
-            <RightArrow />
-          </Link>
-          <Link
-            to="/privacy-policy"
-            className="flex justify-between items-center bg-[#FFFFFF] w-full border-gray-400 border p-3 rounded-xl text-left font-pretendard font-medium  mb-5"
-          >
-            <span>개인 정보 처리 방침</span>
-            <RightArrow />
-          </Link>
-          <Link
-            to="/addition"
             className="flex justify-between items-center bg-[#FFFFFF] w-full border-gray-400 border p-3 rounded-xl text-left font-pretendard font-medium"
           >
-            <span>추가 약관/안내</span>
+            <span>서비스 이용 약관</span>
             <RightArrow />
           </Link>
         </section>
