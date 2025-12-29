@@ -8,7 +8,15 @@ export default function ViewedPosts({ userId }) {
   useEffect(() => {
     if (!userId) return;
 
-    getRecentPosts(userId).then(setPosts).catch(console.error);
+    getRecentPosts(userId)
+      .then((data) => {
+        console.log('최근 본 글 API data:', data);
+        const uniquePosts = Array.from(
+          new Map(data.map((post) => [post.id, post])).values(),
+        );
+        setPosts(uniquePosts);
+      })
+      .catch(console.error);
   }, [userId]);
 
   if (posts.length === 0) {
@@ -19,9 +27,8 @@ export default function ViewedPosts({ userId }) {
 
   return (
     <div className="flex flex-col gap-4">
-      {posts.map((post) => (
-        <PostBox key={post.id} post={post} />
-      ))}
+      {/* 🔥 여기서 posts 배열 그대로 넘기기 */}
+      <PostBox posts={posts} />
     </div>
   );
 }
