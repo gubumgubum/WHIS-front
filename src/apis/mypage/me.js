@@ -1,6 +1,6 @@
-import instance from '../axios';
+import axios from '../axios';
 
 export const getMe = async () => {
-  const res = await instance.get('auth/me');
+  const res = await axios.get('/auth/me');
   return res.data;
 };
