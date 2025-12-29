@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Heart from '../../assets/icon/heart';
+import Heart from '../../assets/icon/heart.jsx';
 import BigHeart from '../../assets/icon/bigheart';
 import Comment from '../../assets/icon/comment';
 

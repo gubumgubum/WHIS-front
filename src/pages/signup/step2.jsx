@@ -55,7 +55,7 @@ function Step2Page() {
     try {
       await postSignup(payload);
       toast.success('회원가입이 완료되었습니다.');
-      navigate('/signin');
+      navigate('/accept');
     } catch (error) {
       toast.error('회원가입에 실패했습니다.');
     }

@@ -30,7 +30,7 @@ export default function MainAuthPage() {
   const [selected, setSelected] = useState('전체');
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <AuthHeader />
       <img
         src={postbear}

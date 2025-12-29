@@ -122,6 +122,6 @@ export default function PostBox({ category }) {
           </div>
         </div>
       ))}
-    </div>
+    </Link>
   );
 }
