@@ -18,6 +18,9 @@ import ReportPage from './pages/report';
 import ReportHistoryPage from './pages/reporthistory';
 import AboutPage from './pages/about';
 import AcceptPage from './pages/accept/index';
+import Service from './pages/accept/service';
+import PrivacyPolicy from './pages/accept/privacy-policy';
+import Addition from './pages/accept/addition';
 
 function App() {
   return (
@@ -41,6 +44,9 @@ function App() {
         <Route path="/reporthistory" element={<ReportHistoryPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/accept" element={<AcceptPage />} />
+        <Route path="/service" element={<Service />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/addition" element={<Addition />} />
       </Routes>
     </>
   );
