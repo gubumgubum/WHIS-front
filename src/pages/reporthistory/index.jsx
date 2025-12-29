@@ -59,9 +59,7 @@ function SentPage() {
             >
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center">
-                  <span className="ml-2 font-bold font-pretendard font-bold">
-                    댓글
-                  </span>
+                  <span className="ml-2 font-bold font-pretendard">댓글</span>
 
                   <span
                     className="
@@ -92,7 +90,7 @@ function SentPage() {
               </div>
 
               <div className="bg-white border border-[#838383] rounded-xl p-4 min-h-[145px] h-auto overflow-y-auto">
-                <p className="font-pretendard text-sm text-gray-700 leading-relaxed whitespace-pre-line font-bold">
+                <p className="font-pretendard text-sm text-gray-700 leading-relaxed whitespace-pre-line">
                   {item.content}
                 </p>
               </div>

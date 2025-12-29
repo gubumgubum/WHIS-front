@@ -4,6 +4,7 @@ import { useState } from 'react';
 import TitleInput from '../../components/report/TitleInput';
 import Dtextarea from '../../components/report/Dtextarea';
 import FileAdd from '../../components/create-post/fileadd';
+import { Link } from 'react-router-dom';
 
 function ReportPage() {
   const [isOpen, setIsOpen] = useState(false);
@@ -85,12 +86,13 @@ function ReportPage() {
               취소
             </button>
 
-            <button
+            <Link
+              to="/reporthistory"
               type="button"
-              className="text-pretendard font-black  flex-1 py-3 rounded-xl bg-[#B8A38A] text-white font-medium"
+              className="text-pretendard font-black flex flex-1 flex-col items-center py-3 rounded-xl bg-[#B8A38A] text-white font-medium"
             >
               작성 완료
-            </button>
+            </Link>
           </div>
         </section>
       </main>
