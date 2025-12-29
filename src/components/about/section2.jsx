@@ -4,7 +4,7 @@ export default function Section2() {
   return (
     <section
       id="section2"
-      className="w-[1920px] h-[1080px] font-pretendard  items-center justify-center flex flex-col"
+      className="w-full h-[1080px] font-pretendard  items-center justify-center flex flex-col"
     >
       <div className="flex flex-col gap-[58.27px] items-center jusitify-center">
         <div className="flex">

@@ -18,12 +18,12 @@ export default function Section1() {
           <img
             src={character}
             alt="캐릭터 이미지"
-            className="w-[90px] absolute right-[700px] top-[29%]"
+            className="w-[90px] absolute right-[700px] top-[30%]"
           />
           <img
             src={letter}
             alt="편지 이미지"
-            className="w-[88px] absolute left-[600px] bottom-[40%]"
+            className="w-[88px] absolute left-[500px] bottom-[40%]"
           />
           <div className="flex flex-col justify-center items-center">
             <p className="text-[64px] font-extrabold font-pretendard text-white">

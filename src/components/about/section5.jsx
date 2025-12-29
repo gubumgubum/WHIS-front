@@ -7,7 +7,7 @@ import ha from '../../assets/img/ha.png';
 
 export default function Section5() {
   return (
-    <div className="w-[1920px] h-[1080px] font-pretendard flex justify-center items-center flex-col">
+    <div className="w-full h-[1080px] font-pretendard flex justify-center items-center flex-col">
       <div className="flex flex-col items-center justify-center gap-1 mb-[54px]">
         <p className="text-[24px]">광주소프트웨어마이스터고</p>
         <p className="text-[36px] font-medium">제9회 아이디어페스티벌</p>

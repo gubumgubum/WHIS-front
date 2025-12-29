@@ -6,7 +6,7 @@ import Section5 from '../../components/about/section5';
 
 export default function AboutPage() {
   return (
-    <div>
+    <div className="w-full h-[1080px]">
       <Section1 />
       <Section2 />
       <Section3 />

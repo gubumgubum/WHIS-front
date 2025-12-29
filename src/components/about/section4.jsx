@@ -2,7 +2,7 @@ import bear from '../../assets/img/bear.png';
 
 export default function Section4() {
   return (
-    <section className="w-[1920px] h-[1080px] font-pretendard flex items-center justify-center flex-col border-b border-">
+    <section className="w-full h-[1080px] font-pretendard flex items-center justify-center flex-col border-b border-">
       <div>
         <p className="font-medium text-[36px] mb-[105px]">
           Whis 마스코드를 소개해요! 🙌
