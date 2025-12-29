@@ -5,18 +5,19 @@ import { Link } from 'react-router-dom';
 const dummyData = [
   {
     id: 1,
-    type: '욕설/비속어 사용',
-    status: '승인',
+    name: '규범',
+    type: '기타',
     date: '12월 1일',
-    content:
-      '자신이 하고싶은 욕설을 익명뒤에 숨어서 다수 사용하고 있습니다. 빠르게 처리해주세요.',
+    status: '승인',
+    hasFile: true,
   },
   {
     id: 2,
-    type: '기타',
+    name: '건우',
+    type: '개인정보 노출',
+    date: '11월 2일',
     status: '거절',
-    date: '10월 25일',
-    content: '이 게시글 맘에 안들어요. 빠르게 삭제 해주세요!!!!!!!!!!! ><',
+    hasFile: true,
   },
 ];
 
@@ -24,67 +25,52 @@ function SentPage() {
   const [tab, setTab] = useState('sent');
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pb-[80px]">
       <AuthHeader />
 
       <main className="flex flex-col items-center mt-12">
-        <div className="flex gap-6 text-sm mb-10">
-          <span className="text-gray-300"></span>
+        {/* 탭 */}
+        <div className="flex gap-6 text-sm mb-12">
           <Link
             to="/sent"
             onClick={() => setTab('sent')}
-            className={`${
+            className={
               tab === 'sent' ? 'font-bold text-black' : 'text-gray-400'
-            }`}
+            }
           >
             신고 이력
           </Link>
-          <span>|</span>
+          <span className="text-gray-300">|</span>
           <Link
             to="/history"
             onClick={() => setTab('received')}
-            className={`${
+            className={
               tab === 'received' ? 'font-bold text-black' : 'text-gray-400'
-            }`}
+            }
           >
             신고 받은 이력
           </Link>
         </div>
 
-        <div className="flex flex-col gap-6">
+        {/* 🔁 원래 HistoryPage 카드 */}
+        <div className="flex flex-col gap-10">
           {dummyData.map((item) => (
             <div
               key={item.id}
-              className="w-[550px] min-h-[213px] h-auto bg-[#FFF8F0] rounded-[25px] px-[26px] pt-[17px] pb-[26px] shadow-lg shadow-black/20 border border-[#838383]"
+              className="w-[550px] h-[446px] bg-[#FFF8F0] rounded-[20px] p-5 shadow-md border border-[#838383]"
             >
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center">
-                  <span className="ml-2 font-medium font-pretendard">댓글</span>
-
-                  <span
-                    className="
-        ml-[55px]
-        w-[100px]
-        h-[15px]
-        bg-[#DDA67E]
-        text-white
-        text-xs
-        flex items-center justify-center
-        rounded-[25px]
-      "
-                  >
+              <div className="flex justify-between items-center mb-4 text-sm">
+                <div className="flex items-center gap-3">
+                  <span className="font-semibold">이름 : {item.name}</span>
+                  <span className="bg-[#DDA67E] text-white px-3 py-[2px] rounded-full text-xs">
                     {item.type}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2 text-sm">
                   <span
-                    className={`px-3 py-[2px] rounded-full text-xs text-black ${
-                      item.status === '승인'
-                        ? 'bg-[#C8F7B8]'
-                        : item.status === '거절'
-                          ? 'bg-[#FABABA]'
-                          : 'bg-[#CDE4FF]'
+                    className={`px-3 py-[2px] rounded-full text-xs ${
+                      item.status === '승인' ? 'bg-[#C8F7B8]' : 'bg-[#FABABA]'
                     }`}
                   >
                     {item.status}
@@ -93,11 +79,25 @@ function SentPage() {
                 </div>
               </div>
 
-              <div className="bg-white border border-[#838383] rounded-xl p-4 min-h-[145px] h-auto overflow-y-auto">
-                <p className="font-pretendard text-sm text-gray-700 leading-relaxed whitespace-pre-line">
-                  {item.content}
+              <div className="bg-white border border-[#838383] rounded-lg w-[500px] min-h-[50px] h-auto mb-[8px] px-4 py-3">
+                <p className="text-[14px] text-gray-800 font-pretendard font-medium">
+                  전세준이 딴짓해요!!!
                 </p>
               </div>
+
+              <div className="bg-white border border-[#838383] rounded-lg w-[500px] min-h-[254px] h-auto p-5">
+                <p className="text-[14px] text-gray-700 leading-[1.7] font-pretendard font-medium">
+                  세준이가 아이디어 페스티벌 시간에 사보과제만 해요 진짜
+                  망했어요..ㅠㅠ 빠르게 처리 부탁드립니다.
+                </p>
+              </div>
+
+              {item.hasFile && (
+                <div className="w-[500px] mt-4 bg-white border border-[#838383] rounded-lg px-3 py-2 flex justify-between items-center text-sm font-pretendard font-medium">
+                  <span>세준이가 과제하는 사진.png</span>
+                  <span className="cursor-pointer">⬇</span>
+                </div>
+              )}
             </div>
           ))}
         </div>
