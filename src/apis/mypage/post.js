@@ -1,15 +1,12 @@
-import instance from '../axios'; // axios instance 경로 맞게 조정
+import axios from '../axios'; // axios instance 경로 맞게 조정
 
-export const getMyPosts = async (writerId) => {
-  const response = await instance.get('/mypage/post', {
-    params: { writerId },
-  });
-
+export const getMyPosts = async () => {
+  const response = await axios.get('/post/my');
   return response.data;
 };
 
 export const getRecentPosts = async (userId) => {
-  const res = await instance.get('/mypage/recent-posts', {
+  const res = await axios.get('/mypage/recent-posts', {
     params: { userId },
   });
   return res.data;
