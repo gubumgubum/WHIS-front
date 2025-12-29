@@ -1,0 +1,88 @@
+import AuthHeader from '../../components/header/auth/ui';
+import { useLocation, Link } from 'react-router-dom';
+
+const dummyData = [
+  {
+    id: 1,
+    name: '규범',
+    type: '욕설/비하 사용',
+    date: '12월 1일',
+    hasFile: true,
+  },
+];
+
+function HistoryPage() {
+  const location = useLocation();
+
+  const isSent = location.pathname === '/sent';
+  const isReceived = location.pathname === '/history';
+
+  return (
+    <div className="min-h-screen bg-white">
+      <AuthHeader />
+
+      <main className="flex flex-col items-center mt-12">
+        <div className="flex gap-6 text-sm mb-12">
+          <Link
+            to="/sent"
+            className={isSent ? 'font-bold text-black' : 'text-gray-400'}
+          >
+            신고 이력
+          </Link>
+
+          <span className="text-gray-300">|</span>
+
+          <Link
+            to="/history"
+            className={isReceived ? 'font-bold text-black' : 'text-gray-400'}
+          >
+            신고 받은 이력
+          </Link>
+        </div>
+        <div className="flex flex-col gap-10">
+          {dummyData.map((item) => (
+            <div
+              key={item.id}
+              className="w-[550px] h-[446px] bg-[#FFF8F0] rounded-[20px] p-5 shadow-md border border-[#838383]"
+            >
+              {/* 상단 정보 */}
+              <div className="flex justify-between items-center mb-4 text-sm">
+                <div className="flex items-center gap-3">
+                  <span className="font-semibold">이름 : {item.name}</span>
+                  <span className="bg-[#DDA67E] text-white px-3 py-[2px] rounded-full text-xs">
+                    {item.type}
+                  </span>
+                </div>
+                <span className="text-gray-500">{item.date}</span>
+              </div>
+
+              {/* 내용 박스 (비워둠) */}
+              <div className="bg-white border border-[#838383] rounded-lg w-[500px] min-h-[50px] h-auto mb-[8px] px-4 py-3">
+                <p className="text-[14px] text-gray-800 font-pretendard font-bold">
+                  전세준이 딴짓해요!!!
+                </p>
+              </div>
+
+              <div className="bg-white border border-[#838383] rounded-lg w-[500px] min-h-[254px] h-auto p-5">
+                <p className="text-[14px] text-gray-700 leading-[1.7] font-pretendard font-bold">
+                  세준이가 아이디어 페스티벌 시간에 사보과제만 해요 진짜
+                  망했어요..ㅠㅠ 빠르게 처리 부탁드립니다.
+                </p>
+              </div>
+
+              {/* 첨부파일 */}
+              {item.hasFile && (
+                <div className="w-[500px] mt-4 bg-white border border-[#838383] rounded-lg px-3 py-2 flex justify-between items-center text-sm font-bold">
+                  <span>세준이가 과제하는 사진.png</span>
+                  <span className="cursor-pointer">⬇</span>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </main>
+    </div>
+  );
+}
+
+export default HistoryPage;
