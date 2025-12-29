@@ -7,7 +7,7 @@ export const postSignup = async ({
   grade,
   profileImageUrl,
 }) => {
-  const res = await instance.post('auth/signup', {
+  const res = await instance.post('/auth/signup', {
     email,
     password,
     name,
