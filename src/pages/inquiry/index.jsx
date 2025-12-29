@@ -1,44 +1,32 @@
 import AuthHeader from '../../components/header/auth/ui';
-import File from '../../assets/icon/file';
-import ContentTextarea from '../../components/inquiry/content';
-import TitleInput from '../../components/inquiry/title';
-import Plus from '../../assets/icon/plus';
+import TitleInput from '../../components/report/TitleInput';
+import Dtextarea from '../../components/report/Dtextarea';
+import FileAdd from '../../components/create-post/fileadd';
+import { useNavigate } from 'react-router-dom';
 
 function InquiryPage() {
+  const navigate = useNavigate();
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg=white flex flex-col">
       <AuthHeader />
 
-      <main className="flex flex-col items-center mt-[120px]">
-        <h1 className="text-xl font-pretendard font-bold mb-8">문의하기</h1>
+      <main className="flex-1 flex flex-col items-center justify-start pt-[120px] pb-[120px]">
+        <h1 className="text-xl font-pretendard font-bold mb-8">문의 하기</h1>
 
-        <section className="w-[550px] h-[545px] bg-[#FFF7F0] rounded-3xl p-6 shadow-lg shadow-black/40">
-          <ContentTextarea />
+        <section className="w-[550px] min-h-[545px] h-auto bg-[#FFF7F0] rounded-3xl p-6 shadow-lg shadow-black/40">
           <TitleInput />
+          <Dtextarea />
 
           <div className="mb-[15px]">
-            <input type="file" id="file-upload" className="hidden" />
-
-            <label
-              htmlFor="file-upload"
-              className="flex items-center justify-between
-                                   w-[500px] h-[50px]
-                                   px-4
-                                   border border-gray-400 rounded-xl
-                                   bg-white text-sm cursor-pointer"
-            >
-              <div className="flex items-center gap-2 text-gray-600">
-                <File />
-                파일 추가
-              </div>
-              <Plus />
-            </label>
+            <FileAdd />
           </div>
 
           <div className="flex gap-3">
             <button
               type="button"
               className="text-pretendard font-black flex-1 py-3 border border-gray-400 rounded-xl bg-white font-medium"
+              onClick={() => navigate(-1)}
             >
               취소
             </button>
