@@ -69,7 +69,7 @@ export default function AcceptPage() {
           onClick={() => {
             if (allChecked) {
               localStorage.removeItem('accept-checked'); // 동의 후 상태 초기화
-              navigate('/main-auth');
+              navigate('/signin');
             }
           }}
           disabled={!allChecked}

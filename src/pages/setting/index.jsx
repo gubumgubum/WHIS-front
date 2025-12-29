@@ -15,6 +15,7 @@ function SettingPage() {
       sessionStorage.removeItem('accessToken');
       navigate('/signin');
     } catch (error) {
+      console.error(error);
       toast.error('로그아웃에 실패했습니다.');
     }
   };

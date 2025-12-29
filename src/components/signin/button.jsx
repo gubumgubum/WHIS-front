@@ -3,7 +3,7 @@ export default function Button({
   onClick,
   disabled,
   className,
-  type = 'button',
+  type = 'submit',
 }) {
   return (
     <button

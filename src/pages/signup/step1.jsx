@@ -19,11 +19,22 @@ function Step1Page() {
   const isFormValid =
     email.trim() !== '' && isPasswordValid && password === passwordConfirm;
 
+  const [error, setError] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!isFormValid) return;
-
-    navigate('/signup-step2');
+    if (!isFormValid) {
+      if (email.trim() === '') {
+        setError('이메일을 입력해주세요.');
+      } else if (!isPasswordValid) {
+        setError('비밀번호는 영문과 숫자를 포함한 8자 이상이어야 합니다.');
+      } else if (password !== passwordConfirm) {
+        setError('비밀번호가 일치하지 않습니다.');
+      }
+      return;
+    }
+    setError('');
+    navigate('/signup-step2', { state: { email, password } });
   };
 
   return (
@@ -58,9 +69,9 @@ function Step1Page() {
                   value={passwordConfirm}
                   onChange={(e) => setPasswordConfirm(e.target.value)}
                 />
+                {error && <p className="text-xs text-red-500 mt-2">{error}</p>}
               </div>
               <Button
-                type="submit"
                 disabled={!isFormValid}
                 className={isFormValid ? 'bg-[#AC7F5E]' : 'bg-[#BA9A81]'}
               >
