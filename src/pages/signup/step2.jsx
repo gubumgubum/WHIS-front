@@ -8,6 +8,7 @@ import Button from '../../components/signin/button';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { DEFAULT_PROFILE_URL } from '../../constants/profile';
 import { postSignup } from '../../apis/postSignup';
+import { toast } from 'sonner';
 
 function Step2Page() {
   const location = useLocation();
@@ -53,10 +54,10 @@ function Step2Page() {
     };
     try {
       await postSignup(payload);
-      alert('회원가입이 완료되었습니다.');
+      toast.success('회원가입이 완료되었습니다.');
       navigate('/signin');
     } catch (error) {
-      alert('회원가입에 실패했습니다.');
+      toast.error('회원가입에 실패했습니다.');
     }
   };
 

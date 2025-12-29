@@ -8,6 +8,7 @@ import MainUnauthPage from './pages/main-unauth';
 import MainAuthPage from './pages/main-auth';
 import SettingPage from './pages/setting';
 import Alerts from './pages/alerts';
+import MyPage from './pages/mypage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/setting" element={<SettingPage />} />
         <Route path="/main-auth" element={<MainAuthPage />} />
         <Route path="/alerts" element={<Alerts />} />
+        <Route path="/mypage" element={<MyPage />} />
       </Routes>
     </>
   );
