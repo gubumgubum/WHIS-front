@@ -1,59 +1,52 @@
+import { Link } from 'react-router-dom';
 import Comment from '../../assets/icon/comment';
 import Heart from '../../assets/icon/heart';
-import { CATEGORY_MAP } from '../../constants/categoryMap';
+import { postlist } from '../../mock/post';
 
-export default function PostBox({ posts = [] }) {
+export default function PostBox() {
   return (
-    <div className="flex flex-col gap-[20px]">
-      {posts.map((post) => (
+    <Link to="/view-post" className="flex flex-col gap-[20px]">
+      {postlist.map((post) => (
         <div
           key={post.id}
-          className="flex flex-col w-[544px] h-[210px] bg-white px-[46px] py-10
-                     rounded-[32px] shadow-[6px_6px_15px_1px_rgba(0,0,0,0.15)]
-                     gap-[20px] hover:bg-[#FFF9F4] hover:cursor-pointer"
+          className="flex flex-col w-[544px] h-[210px] bg-white px-[46px] py-10  rounded-[32px] shadow-[6px_6px_15px_1px_rgba(0,0,0,0.15)] gap-[20px] hover:bg-[#FFF9F4] hover:cursor-pointer"
         >
           <p className="font-pretendard font-medium text-xl text-[#1E0D00]">
             {post.title}
           </p>
-
           <p className="font-pretendard text-sm text-[#818181] w-[423px] h-[51px]">
-            {post.content}
+            {post.contents}
           </p>
-
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row gap-1">
               <p className="font-pretendard text-xs text-[#818181]">
-                {post.anonymous ? '익명' : `사용자 ${post.writerId}`}
+                {post.user}
               </p>
               <p className="text-xs text-[#818181]">-</p>
               <p className="font-pretendard text-xs text-[#818181]">
-                {new Date(post.createdAt).toLocaleDateString()}
+                {post.time}
               </p>
-              <p
-                className="bg-[#DDA67E] rounded-lg text-white font-pretendard border border-[#818181]
-                            text-[10px] w-[44px] h-[15px] text-center"
-              >
-                {CATEGORY_MAP[post.category] ?? post.category}
+              <p className="bg-[#DDA67E] rounded-lg text-white font-pretendard border border-[#818181] text-[10px] w-[44px] h-[15px] text-center">
+                {post.type}
               </p>
             </div>
-
             <div className="flex flex-row items-center gap-3">
               <div className="flex items-center gap-1">
                 <Heart />
                 <p className="font-pretendard text-xs text-[#1E0D00]">
-                  {post.like ?? 0}
+                  {post.like}
                 </p>
               </div>
               <div className="flex items-center gap-1">
                 <Comment />
                 <p className="font-pretendard text-xs text-[#1E0D00]">
-                  {post.comment ?? 0}
+                  {post.comment}
                 </p>
               </div>
             </div>
           </div>
         </div>
       ))}
-    </div>
+    </Link>
   );
 }
