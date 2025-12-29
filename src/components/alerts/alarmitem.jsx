@@ -1,6 +1,9 @@
+import { Link } from 'react-router-dom';
+
 export default function AlarmItem({ alarm, isRead, onClick }) {
   return (
-    <div
+    <Link
+      to="/view-post"
       onClick={onClick}
       className={`
         relative w-[544px] h-[176px] cursor-pointer rounded-[32px]
@@ -25,6 +28,6 @@ export default function AlarmItem({ alarm, isRead, onClick }) {
       {!isRead && (
         <span className="absolute right-[49px] top-[44px] h-[15px] w-[15px] rounded-full bg-[#20ABFF]" />
       )}
-    </div>
+    </Link>
   );
 }

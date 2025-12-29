@@ -16,7 +16,7 @@ export default function NotFoundPage() {
         </div>
       </div>
       <button
-        onClick={() => navigate('/main-auth')}
+        onClick={() => navigate(-1)}
         className="w-[200px] h-[60px] border border-black bg-white text-[#764D2E] rounded-[10px] font-semibold font-pretendard"
       >
         돌아가기

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Comment from '../../assets/icon/comment';
-import Heart from '../../assets/icon/heart';
+import Heart from '../../assets/icon/heart.jsx';
 import BigHeart from '../../assets/icon/bigheart';
 import defaultimg from '../../assets/img/defaultImage.png';
 import LF from '../../assets/icon/lf';
