@@ -36,7 +36,7 @@ function App() {
         <Route path="/main-auth" element={<MainAuthPage />} />
         <Route path="/alerts" element={<Alerts />} />
         <Route path="/mypage" element={<MyPage />} />
-        <Route path="/view-post/:id" element={<ViewPostPage />} />
+        <Route path="/post/:id" element={<ViewPostPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/create-post" element={<CreatePostPage />} />
@@ -49,6 +49,8 @@ function App() {
         <Route path="/addition" element={<Addition />} />
         <Route path="/sent" element={<SentPage />} />
         <Route path="/history" element={<HistoryPage />} />
+        <Route path="/view-post/:postId" element={<ViewPostPage />} />
+        <Route path="/post/:postId" element={<ViewPostPage />} />
       </Routes>
     </>
   );
